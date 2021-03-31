@@ -1,5 +1,5 @@
 # fomlads-group-project 
-# Model Comparison on the Income Evaluation Dataset
+# Model Comparison on the Rain in Australia Dataset
 "Explain the code base and the functionality of the modules"
 In this repository we will investigate the patterns of this dataset. The 4 models we will use:
 
