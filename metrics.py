@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 #Metrics analysis
 #Confusion Matrix, Precision, Recall, False positive ratio
-#All used to obtain the ROC cuve
+#All used to obtain the ROC curve, for the get roc function uses classifier idea, which now thinking about it could prove costly if we just use one entire file for metrics?s
 
 def confusion_matrix(Y, Y_predict):
   K = len(np.unique(Y)) #how many unique elements in preidictions and ground truths (here it is 2)
