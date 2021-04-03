@@ -4,7 +4,11 @@ import matplotlib.pyplot as plt
 
 #Metrics analysis
 #Confusion Matrix, Precision, Recall, False positive ratio
-#All used to obtain the ROC curve, for the get roc function uses classifier idea, which now thinking about it could prove costly if we just use one entire file for metrics?s
+#All used to obtain the ROC curve
+
+#measures how many y predictions match the y test set as a percentage
+def accuracy(y_pred, y_test):
+  return np.sum(y_pred==y_test)/y_test.size
 
 def confusion_matrix(Y, Y_predict):
   K = len(np.unique(Y)) #how many unique elements in preidictions and ground truths (here it is 2)
@@ -13,10 +17,6 @@ def confusion_matrix(Y, Y_predict):
     cm[Y[i]][Y_predict[i]]+=1
 
   return cm
-
-
-#test_confusion_matrix = confusion_matrix(y_test, y_pred)
-#print(test_confusion_matrix)
 
 # The ratio of correct positive predictions to the total predicted positives
 def precision(cm):
@@ -32,6 +32,9 @@ def recall(cm):
 def false_positive_ratio(cm):
   return cm[0][1]/(cm[0][1] + cm[0][0])
 
+
+#Everything below this can go in the individual model files
+"""
 # Define decision thresholds between 0-1
 thresholds = np.linspace(0,1, 400)
 
@@ -52,7 +55,7 @@ def get_cutoff(fpr, tpr):
   optimal_threshold = thresholds[optimal_idx]
   return optimal_idx, optimal_threshold
 
-"""
+
 train_roc = get_roc(X_train, Y_train)
 test_roc = get_roc(X_test, Y_test)
 
@@ -71,7 +74,5 @@ plt.legend()
 """
 #the curve tells us how well our classifier works on our data, given the training and test sets
 #we want to maximise the area
-#cutoff point will maximises aour true positive rate (recall) and minimise the the false positive rate
+#cutoff point will maximises our true positive rate (recall) and minimise the the false positive rate
 
-#here it is unbalanced that why Valid is very different
-#would be good to use cross validation to choose the cutoff region to be more representative
