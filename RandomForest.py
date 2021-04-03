@@ -1,9 +1,14 @@
 from sklearn.ensemble import RandomForestClassifier
+from metrics import accuracy
+from metrics import confusion_matrix
+from metrics import precision
+from metrics import recall
+from metrics import false_positive_ratio
 import pandas as pd
 import numpy as np
 import time
 
-start=time.process_time()
+
 
 np.random.seed(42) #seed for repeatable results
 df=pd.read_csv('RainAUS.csv') #Importing the preprocessed dataset
@@ -21,15 +26,14 @@ for train_test_split in i:
     y_train = ys[train_index_array]
     x_test = xs[test_index_array]
     y_test = ys[test_index_array]
+    start=time.process_time()
 # Start to implement the Random Forest Classifier
     RFClassifier = RandomForestClassifier(n_estimators = 20,random_state = 1)
     RFClassifier.fit(x_train,y_train)
     y_pred_RF = RFClassifier.predict(x_test)
-    acc=np.sum(y_pred_RF==y_test)/y_test.size #compute accuracy
-
+    acc=accuracy(y_pred_RF, y_test) #compute accuracy
     print("Accuracy on Test set for train_test_split=",train_test_split,"is", acc)
-
-print(time.process_time()-start)
+    print("Time Taken:", time.process_time()-start)
 
 # We have played around with the values for train_test_split and when using the 0.7 value, we see the following:
 # The Accuracy on Test with Ranndom Forest is 0.8474723864521747 and it takes roughly 3.5-4 seconds at most to compute this(for the entire data-set, depending on your machine).
