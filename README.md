@@ -26,20 +26,31 @@ Also about new quirky concepts too with foldable and different features like LG 
 
 
 ## Problems with overleaf:
-from rain in australia
-1. I can't make it **cite a wikipedia page**, I followed the indications here: https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&page=2019%E2%80%9320_Australian_bushfire_season&id=1013926199&wpFormIdentifier=titleform , but I cannot make it work, because the link contains a "%" which is considered by overleaf as comment symbol.
 
 ## Potential references:
+
+
 
 Marquees Brownlee budget phone video:
 https://www.youtube.com/watch?v=u41Zt6z5s7A points budget system and spending it on features, some more high end, others less so and the trade offs with that
 
 
 
+For Metrics in Results section (applying them to multi-class classification):
+https://medium.com/synthesio-engineering/precision-accuracy-and-f1-score-for-multi-label-classification-34ac6bdfb404 Used this for the F1 Score (expanding from binary case) calculated the Macro Average F1 Score
+
+
+
 
 
 ## Libraries we haved used
-This will be the list of libraries we will use
+In this project we have used the following Python libraries:
+- Numpy (For mathematical calculations for the data)
+- Matplotlib (For visualisation of the dataset)
+- Pandas (For helping to manipulate the dataset in a reliable way)
+- Time (For duration of model calculations)
+- sklearn (For the 2 models outside of lectures)
+- metrics (Our own local library, where we have reconstructed the metrics for multi-class classification problems)
 
 
 ## Interface instructions for Each Model
