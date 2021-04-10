@@ -11,9 +11,9 @@ import time
 
 
 np.random.seed(42) #seed for repeatable results
-df=pd.read_csv('RainAUS.csv') #Importing the preprocessed dataset
-xs=df.drop(['Date', 'Location', 'RainTomorrow', 'WindGustDir', 'WindDir3pm', 'WindDir9am'], axis=1).to_numpy() #all the numerical data that will be use to predict
-ys=df['RainTomorrow'].to_numpy() #The target variable
+df=pd.read_csv('MobilePricingUpdated.csv') #Importing the preprocessed dataset
+xs=df.drop(['price_range'], axis=1).to_numpy() #all the numerical data that will be use to predict
+ys=df['price_range'] #The target variable
 
 #forming the train and test data split, through index arrays
 index_array=np.arange(len(ys))
@@ -28,11 +28,12 @@ for train_test_split in i:
     y_test = ys[test_index_array]
     start=time.process_time()
 # Start to implement the Random Forest Classifier
-    RFClassifier = RandomForestClassifier(n_estimators = 20,random_state = 1)
+    RFClassifier = RandomForestClassifier(n_estimators=50)
     RFClassifier.fit(x_train,y_train)
     y_pred_RF = RFClassifier.predict(x_test)
     acc=accuracy(y_pred_RF, y_test) #compute accuracy
     print("Accuracy on Test set for train_test_split=",train_test_split,"is", acc)
+    print("Confusion Matrix:", confusion_matrix(y_test,)
     print("Time Taken:", time.process_time()-start)
 
 # We have played around with the values for train_test_split and when using the 0.7 value, we see the following:

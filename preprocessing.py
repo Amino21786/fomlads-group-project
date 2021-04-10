@@ -1,39 +1,42 @@
 import numpy as np 
 import pandas as pd 
-df=pd.read_csv('weatherAUS.csv')
-print(df.isnull().mean())
-#From the dataset, Sunshine, Evaporation, Cloud9am, Cloud3pm have too many missing values will drop these (all have at least 38% data missing)
-df=df.drop(['Evaporation', 'Sunshine', 'Cloud9am', 'Cloud3pm'], axis=1)
-#Separate the Categorial and Numerical features to fill in the null balues
-df_cat=df[['Date','Location','WindGustDir','WindDir9am','WindDir3pm','RainToday','RainTomorrow']]
-df_num=df.drop(['Date','Location','WindGustDir','WindDir9am','WindDir3pm','RainToday','RainTomorrow'], axis = 1)
 
-#for the categorial features, every location has a different windspeed, direction, temperature and pressure
-#we can replace the categorial ones with the most frequent values for that location
-for col in df_cat.columns.values:
-    if df[col].isnull().sum() != 0:
-        df_cat[col] = df.groupby(['Location'])[col].apply(lambda x: x.fillna(x.mode().max()))
-print(df_cat.isnull().mean())
-#some locations have missing values for WindGustDir, so we use the mode of the complete dataset here
-df_cat['WindGustDir']=df['WindGustDir'].fillna(df['WindGustDir'].mode().max())
-#Replacing Numerical features with mean value based on location same as Categories
+df=pd.read_csv('MobilePricing.csv')
+print(df.head()) #look at the first 5 entries of the csv
+df.info() #All the data points displayed giving what data type it has
+#we see they are all numerical features so no need to convert any categorical features to numerical
 
-for col in df_num.columns.values:
-    if df[col].isnull().sum() != 0:
-        df_num[col] = df.groupby(['Location'])[col].apply(lambda x: x.fillna(round(x.mean(),1)))
+print(df.describe()) #Breakdown of each data point, inlcuding mean and standard deviation
+#With this we see the columns blue, dual_sim, four_g, three_g, wifi are boolean valued inputs (0 for no and 1 for yes)
+
+#check for any null values
+print(df.isnull().sum()) #turns out there is no null values
+
+#We could remove the three_g column as when a phone has 4_g it automatically has 3_g. Also in everyday now, 4_g is more relevant
+df=df.drop(['three_g'], axis=1)
+
+#Finally update the csv for use
+df.to_csv('MobilePricingUpdated.csv', index=False)
 
 
-df_num['WindGustSpeed']=df_num['WindGustSpeed'].fillna(df['WindGustSpeed'].mean())
-df_num['Pressure9am']=df_num['Pressure9am'].fillna(df['Pressure9am'].mean())
-df_num['Pressure3pm']=df_num['Pressure3pm'].fillna(df['Pressure3pm'].mean())
 
-#Encoding the Rain columns as OneHot Vectors
-d={'Yes':1,'No':0}
-df_cat['RainToday'].replace({'No': 0, 'Yes': 1},inplace = True)
-df_cat['RainTomorrow'].replace({'No': 0, 'Yes': 1},inplace = True)
+"""
+Thinking of putting this train and test split idea here so we dont need to keep writing this code for each model
+def train_test_split(dataset):
+    i=[0.5,0.7,0.75,0.8,0.85,0.9,0.95,0.99] #train test split takes different values, was previously : train_test_split = 0.7
+    index_array=np.arange(len(ys))
+    train_index_array = index_array[:int(len(index_array) * train_test_split)]
+    test_index_array = index_array[int(len(index_array) * train_test_split):]
+# get train and test subsets
+    x_train = xs[train_index_array]
+    y_train = ys[train_index_array]
+    x_test = xs[test_index_array]
+    y_test = ys[test_index_array]
+    start=time.process_time()
 
-df_updated=pd.merge(df_cat, df_num, left_index=True, right_index=True)
-#3 categorical features turn into numerical form
-categorical_columns = ['WindGustDir', 'WindDir3pm', 'WindDir9am']
-df.updated = pd.get_dummies(df_updated, columns=categorical_columns)
-df_updated.to_csv('RainAUS.csv', index=False)
+
+could use this, very detailed report version of df.describe
+import pandas_profiling as pandas_pf
+pandas_pf.ProfileReport(df)
+
+"""
