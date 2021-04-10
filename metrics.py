@@ -1,6 +1,7 @@
 #This is all from Live session week 6 Google Collab
 import numpy as np 
 import matplotlib.pyplot as plt
+import pandas as pd
 
 #Metrics analysis
 #Confusion Matrix, Precision, Recall, False positive ratio
@@ -12,9 +13,9 @@ def accuracy(y_pred, y_test):
 
 def confusion_matrix(Y, Y_predict):
   K = len(np.unique(Y)) #how many unique elements in preidictions and ground truths (here it is 2)
-  cm = np.zeros((K, K)) #2x2 matrix
+  cm = np.zeros((K, K)) #4x4 matrix
   for i in range(len(Y)):
-    cm[Y[i]][Y_predict[i]]+=1
+    cm[Y_predict[i]][Y[i]]+=1
 
   return cm
 
@@ -31,6 +32,8 @@ def recall(cm):
 # and the total number of actual negative events (regardless of classification)
 def false_positive_ratio(cm):
   return cm[0][1]/(cm[0][1] + cm[0][0])
+
+
 
 
 #Everything below this can go in the individual model files
