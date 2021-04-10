@@ -30,7 +30,11 @@ Also about new quirky concepts too with foldable and different features like LG 
 ## Potential references:
 
 
-
+Increasing Prices:
+iPhone 7 - https://pricespy.co.uk/phones-gps/mobile-phones/apple-iphone-7-32gb--p3895089/statistics
+Noteable case iPhoneX starting at $1000 
+https://pricespy.co.uk/search?search=iphone%2012%20pro
+Tim Cook on why the price - https://www.slashgear.com/iphone-x-pricing-release-schedule-strategy-details-tim-cook-earnings-apple-01529212/#:~:text=Cook%20responded%20to%20a%20question,starting%20price%20of%20%24999%20USD 
 Marquees Brownlee budget phone video:
 https://www.youtube.com/watch?v=u41Zt6z5s7A points budget system and spending it on features, some more high end, others less so and the trade offs with that
 
