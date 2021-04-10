@@ -1,7 +1,7 @@
 from sklearn.ensemble import RandomForestClassifier
 from metrics import accuracy
 from metrics import confusion_matrix
-from metrics import precision
+from metrics import precision_and_recall
 from metrics import recall
 from metrics import false_positive_ratio
 import pandas as pd
@@ -34,6 +34,8 @@ acc=accuracy(y_pred_RF, y_test) #computes accuracy
 cm=confusion_matrix(y_test, y_pred_RF) #computes test confusion matrix
 print("Accuracy on Test set:", acc)
 print("Confusion Matrix:\n", cm)
+print(precision_and_recall(cm))
+
 print("Time Taken:", time.process_time()-start)
 
 # We have played around with the values for train_test_split and when using the 0.7 value, we see the following:

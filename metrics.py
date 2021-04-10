@@ -20,9 +20,23 @@ def confusion_matrix(Y, Y_predict):
   return cm
 
 # The ratio of correct positive predictions to the total predicted positives
-def precision(cm):
-  return cm[1][1]/(cm[1][1] + cm[0][1])
+def precision_and_recall(cm): #for 4x4 case
+  for i in range(4):
+    recall=0
+    precision=0
+    fp=0
+    fn=0
+    tp=cm[i][i]
+    for j in range(4):
+        if i != j:
+          fp+=cm[i][j]
+          fn+=cm[j][i]
+    precision=tp/(tp+fp)
+    recall=tp/(tp+fn)
+    print("Precision for Price Range ", i, " is ",precision)
+    print("Recall for Price Range ", i , " is ", recall)
 
+      
 # The ratio of correct positive predictions to the total positives examples
 def recall(cm):
   return cm[1][1]/(cm[1][1] + cm[1][0])
