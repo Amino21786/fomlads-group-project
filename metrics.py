@@ -1,4 +1,3 @@
-#This is all from Live session week 6 Google Collab
 import numpy as np 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -12,7 +11,7 @@ def accuracy(y_pred, y_test):
   return np.sum(y_pred == y_test)/y_test.size
 
 def confusion_matrix(Y, Y_predict):
-  K = len(np.unique(Y)) #how many unique elements in preidictions and ground truths (here it is 2)
+  K = len(np.unique(Y)) #how many unique elements in preidictions and ground truths (here it is 4)
   cm = np.zeros((K, K)) #4x4 matrix
   for i in range(len(Y)):
     cm[Y_predict[i]][Y[i]] += 1
