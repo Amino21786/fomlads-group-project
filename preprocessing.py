@@ -13,30 +13,37 @@ print(df.describe()) #Breakdown of each data point, inlcuding mean and standard 
 print(df.isnull().sum()) #turns out there is no null values
 
 #We could remove the three_g column as when a phone has 4_g it automatically has 3_g. Also in everyday now, 4_g is more relevant
-df=df.drop(['three_g'], axis=1)
+df_updated=df.drop(['three_g'], axis=1)
 
 #check if the dataset is balanced across the 4 classes
-print(df["price_range"].value_counts())
+print(df_updated["price_range"].value_counts()) #turns out it is evenly distributed between the 4 classes
+
 #Finally update the csv for use
-df.to_csv('MobilePricingUpdated.csv', index=False)
+df_updated.to_csv('MobilePricingUpdated.csv', index=False)
+
+np.random.seed(42) #seed for repeatable results
+df=pd.read_csv('MobilePricingUpdated.csv') #Importing the preprocessed dataset
+xs=df.drop(['price_range'], axis=1).to_numpy() #all the numerical data that will be use to predict
+ys=df['price_range'].to_numpy() #The target variable
 
 
-
-"""
-Thinking of putting this train and test split idea here so we dont need to keep writing this code for each model
-def train_test_split(dataset):
-    i=[0.5,0.7,0.75,0.8,0.85,0.9,0.95,0.99] #train test split takes different values, was previously : train_test_split = 0.7
+def train_test_data(dataset, n):
+    df=pd.read_csv(dataset) #Importing the preprocessed dataset
+    xs=df.iloc[:,:-1].to_numpy() #all the numerical data that will be use to predict (everything but the last column)
+    ys=df.iloc[:,-1].to_numpy() #The target variable (the last column, which in our case will be the price_range)
+    #forming the train and test data split, through index arrays
     index_array=np.arange(len(ys))
-    train_index_array = index_array[:int(len(index_array) * train_test_split)]
-    test_index_array = index_array[int(len(index_array) * train_test_split):]
-# get train and test subsets
+    train_index_array = index_array[:int(len(index_array) * n)]
+    test_index_array = index_array[int(len(index_array) * n):]
+    # get train and test subsets
     x_train = xs[train_index_array]
     y_train = ys[train_index_array]
     x_test = xs[test_index_array]
     y_test = ys[test_index_array]
-    start=time.process_time()
 
+    return x_train, y_train, x_test, y_test
 
+"""
 could use this, very detailed report version of df.describe
 import pandas_profiling as pandas_pf
 pandas_pf.ProfileReport(df)

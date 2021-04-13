@@ -1,5 +1,6 @@
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import precision_recall_fscore_support, f1_score
+from modelconstruct import train_test_data
 from metrics import accuracy
 from metrics import confusion_matrix
 from metrics import precision_and_recall
@@ -15,19 +16,7 @@ import matplotlib.pyplot as plt
 
 
 np.random.seed(42) #seed for repeatable results
-df=pd.read_csv('MobilePricingUpdated.csv') #Importing the preprocessed dataset
-xs=df.drop(['price_range'], axis=1).to_numpy() #all the numerical data that will be use to predict
-ys=df['price_range'].to_numpy() #The target variable
-
-#forming the train and test data split, through index arrays
-index_array=np.arange(len(ys)) 
-train_index_array = index_array[:int(len(index_array) * 0.8)]
-test_index_array = index_array[int(len(index_array) * 0.8):]
-# get train and test subsets
-x_train = xs[train_index_array]
-y_train = ys[train_index_array]
-x_test = xs[test_index_array]
-y_test = ys[test_index_array]
+X_train, Y_train, X_test, Y_test = train_test_data('MobilePricingUpdated.csv', 0.8) #runs train_test_split function
 
 # Train test split can take different values. However, we will choose a=0.8 as in RandomForest.py, to make the test as fair as possible.
 list=[] #Create an empty list
@@ -37,16 +26,16 @@ for i in i_range: # Give different odd values to k_neighbors
            
     # Start to implement the Knn, using the same data for train_split_test as for Random Forest classifier in order to make the tests as fair as possible.        
     knn=KNeighborsClassifier(n_neighbors=i)
-    knn.fit(x_train,y_train)
-    y_pred_Knn = knn.predict(x_test)
+    knn.fit(X_train,Y_train)
+    y_pred_Knn = knn.predict(X_test)
 
     # I have tried the code with odd K-neighbors up until 103, to see if any changes occur. Happily, there are no changes after a certain threshold, but I have limited the values of k until 53, due to time constraints.
     # I have observed that for split=0.8, the minimum of k=25 to achieve accuracy 0.93(which is also the maximum value). For split=0.9, the minimum of k=7 to achieve 0.93 accuracy.
     
     # Now we shall compute 5 metrics (Accuracy, confusion Matrix, precision, recall and f1 (both types))
 
-    acc=accuracy(y_pred_Knn, y_test) #computes accuracy
-    cm=confusion_matrix(y_test, y_pred_Knn) #computes test confusion matrix
+    acc=accuracy(y_pred_Knn, Y_test) #computes accuracy
+    cm=confusion_matrix(Y_test, y_pred_Knn) #computes test confusion matrix
     prm = precision_and_recall(cm) #computes precision and recall and represents the in a matrix
     micro_f1 = micro_average_f1_score(cm) #Micro f1, uses the global precision and recall (prone to imbalanced datasets)
     macro_f1 = macro_average_f1_score(prm) #Macro f1, uses the average of individual classes' precision and recalls (better for imbalanced datasets)
