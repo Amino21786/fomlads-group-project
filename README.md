@@ -43,6 +43,11 @@ https://www.youtube.com/watch?v=u41Zt6z5s7A points budget system and spending it
 For Metrics in Results section (applying them to multi-class classification):
 https://medium.com/synthesio-engineering/precision-accuracy-and-f1-score-for-multi-label-classification-34ac6bdfb404 Used this for the F1 Score (expanding from binary case) calculated the Macro Average F1 Score
 
+A little more information on the Softmax Function and associated loss and gradient values:
+https://www.kdnuggets.com/2016/07/softmax-regression-related-logistic-regression.html
+
+
+
 
 
 
@@ -55,6 +60,7 @@ In this project we have used the following Python libraries:
 - Time (For duration of model calculations)
 - sklearn (For the 2 models outside of lectures)
 - metrics (Our own local library, where we have reconstructed the metrics for multi-class classification problems)
+- Scipy
 
 
 ## Interface instructions for Each Model
