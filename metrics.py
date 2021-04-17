@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 #Metrics analysis
-#Confusion Matrix, Precision, Recall, False positive ratio
-#All used to obtain the ROC curve
+#Confusion Matrix, Precision, Recall, F1 Score (Micro and Macro)
+
 
 #measures how many y predictions match the y test set as a percentage
 def accuracy(y_pred, y_test):
