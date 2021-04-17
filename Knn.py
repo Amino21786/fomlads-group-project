@@ -1,19 +1,42 @@
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import precision_recall_fscore_support, f1_score
 from modelconstruct import train_test_data
 from metrics import accuracy
 from metrics import confusion_matrix
 from metrics import precision_and_recall
 from metrics import micro_average_f1_score
 from metrics import macro_average_f1_score
-
-
 import pandas as pd
 import numpy as np
 import time
 import matplotlib.pyplot as plt
 
 np.random.seed(42) #seed for repeatable results
+
+# n is the test_train_split value below:
+def Knn(dataset,n,Kneighbors):
+    X_train, Y_train, X_test, Y_test = train_test_data(dataset,n) #runs train_test_split function
+    # Train test split can take different values. However, we will choose a=0.8 as in RandomForest.py, to make the test as fair as possible.
+    start=time.process_time() 
+    # Start to implement the Knn, using the same data for train_split_test as for Random Forest classifier in order to make the tests as fair as possible.        
+    knnClassifier=KNeighborsClassifier(n_neighbors=Kneighbors)
+    knnClassifier.fit(X_train,Y_train)
+    y_pred_Knn = knnClassifier.predict(X_test)
+    # Now we shall compute 5 metrics (Accuracy, confusion Matrix, precision, recall and f1 (both types))
+    acc_Knn=accuracy(y_pred_Knn, Y_test) #computes accuracy
+    cm_Knn=confusion_matrix(Y_test, y_pred_Knn) #computes test confusion matrix
+    prm_Knn = precision_and_recall(cm_Knn) #computes precision and recall and represents the in a matrix
+    micro_f1_Knn = micro_average_f1_score(cm_Knn) #Micro f1, uses the global precision and recall (prone to imbalanced datasets)
+    macro_f1_Knn = macro_average_f1_score(prm_Knn) #Macro f1, uses the average of individual classes' precision and recalls (better for imbalanced datasets)
+    run_time_Knn=time.process_time()-start #time taken to compute all of it
+
+    return acc_Knn, cm_Knn, prm_Knn, micro_f1_Knn, macro_f1_Knn, run_time_Knn
+
+print(Knn('MobilePricingUpdated.csv',0.8,25))
+
+
+'''
+
+                                                                                                        OLD code:
 
 def KNN():
 
@@ -36,7 +59,7 @@ def KNN():
         acc=accuracy(y_pred_Knn, Y_test) #computes accuracy
         cm=confusion_matrix(Y_test, y_pred_Knn) #computes test confusion matrix
         prm = precision_and_recall(cm) #computes precision and recall and represents the in a matrix
-        micro_f1 = micro_average_f1_score(cm) #Micro f1, uses the global precision and recall (prone to imbalanced datasets)
+        micro_f1_Knn_Knn_Knn_Knn_Knn_Knn_Knn_Knn = micro_average_f1_score(cm) #Micro f1, uses the global precision and recall (prone to imbalanced datasets)
         macro_f1 = macro_average_f1_score(prm) #Macro f1, uses the average of individual classes' precision and recalls (better for imbalanced datasets)
         
         list.append(acc)
@@ -44,7 +67,7 @@ def KNN():
         print ("Accuracy for KNN for k = ",i," is: ", acc) 
         print("Confusion Matrix:\n", cm)
         print("Precision and Recall Matrix: \n:", prm)
-        print("Micro-average F1 Score:", micro_f1)
+        print("Micro-average F1 Score:", micro_f1_Knn_Knn_Knn_Knn_Knn_Knn_Knn_Knn)
         print("Macro-average F1 Score:", macro_f1)
         
     max_value=max(list)
@@ -76,7 +99,7 @@ KNN()
 
 
 
-
+'''
 '''
                                      Important observations (which should be polished more, but I am v tired and eyes are burning:((
 
