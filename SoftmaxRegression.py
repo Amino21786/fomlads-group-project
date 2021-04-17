@@ -101,10 +101,7 @@ def SoftmaxRegression(dataset, n, learning_rate, iterations, regularisation):
     return acc_train, acc_test, confusion_mat, pr_mat, microf1, macrof1
 
 
-#testing purposes
-print(SoftmaxRegression('train.csv',0.8, 0.001,5000,1))
-#print (a)  #accuracy train
-#print(b)  #accuracy test
+
 
 
 
