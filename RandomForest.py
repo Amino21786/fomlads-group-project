@@ -5,7 +5,6 @@ from metrics import confusion_matrix
 from metrics import precision_and_recall
 from metrics import micro_average_f1_score
 from metrics import macro_average_f1_score
-from metrics import false_positive_ratio
 import pandas as pd
 import numpy as np
 import time
@@ -31,7 +30,7 @@ def RandomForest():
             macro_f1 = macro_average_f1_score(prm) #Macro f1, uses the average of individual classes' precision and recalls (better for imbalanced datasets)
             print("Accuracy on Test set:", acc)
             print("Confusion Matrix:\n", cm)
-            print("Precision and Recall Matrix: \n:", prm)
+            print("Precision and Recall Matrix: \n", prm)
             print("Micro-average F1 Score:", micro_f1)
             print("Macro-average F1 Score:", macro_f1)
             print("Time Taken:", time.process_time()-start) #time taken to compute all of it
