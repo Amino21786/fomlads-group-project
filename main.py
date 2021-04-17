@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import scipy.sparse
-from mainSoftmaxRegression import SoftmaxRegression
+from SoftmaxRegression import SoftmaxRegression
 def main(ifname):
     accuracy_train=[]
     accuracy_test=[]
@@ -12,7 +12,7 @@ def main(ifname):
     macrof1_scores=[]
     nvals=[0.5,0.6,0.7,0.8,0.9]
     for n in nvals:
-        acc_train, acc_test, confusion_mat, pr_mat, microf1, macrof1, ratio= SoftmaxRegression(ifname, n, 0.001, 
+        acc_train, acc_test, confusion_mat, pr_mat, microf1, macrof1= SoftmaxRegression(ifname, n, 0.001, 
         iterations=3000, regularisation=1)
         accuracy_train.append(acc_train)
         accuracy_test.append(acc_test)
