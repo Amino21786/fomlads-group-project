@@ -76,7 +76,7 @@ from metrics import confusion_matrix
 from metrics import precision_and_recall
 from metrics import micro_average_f1_score
 from metrics import macro_average_f1_score
-from metrics import false_positive_ratio
+
 
 
 np.random.seed(42)
@@ -96,10 +96,9 @@ def SoftmaxRegression(dataset, n, learning_rate, iterations, regularisation):
     pr_mat=precision_and_recall(confusion_mat)
     microf1= micro_average_f1_score(confusion_mat)
     macrof1= macro_average_f1_score(pr_mat)
-    ratio= false_positive_ratio(confusion_mat)
     plt.show()
 
-    return acc_train, acc_test, confusion_mat, pr_mat, microf1, macrof1, ratio
+    return acc_train, acc_test, confusion_mat, pr_mat, microf1, macrof1
 
 
 #testing purposes

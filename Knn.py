@@ -6,7 +6,7 @@ from metrics import confusion_matrix
 from metrics import precision_and_recall
 from metrics import micro_average_f1_score
 from metrics import macro_average_f1_score
-from metrics import false_positive_ratio
+
 
 import pandas as pd
 import numpy as np

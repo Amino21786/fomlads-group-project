@@ -10,7 +10,6 @@ def main(ifname):
     accuracy_test=[]
     microf1_scores=[]
     macrof1_scores=[]
-    falsepositiveratios=[]
     nvals=[0.5,0.6,0.7,0.8,0.9]
     for n in nvals:
         acc_train, acc_test, confusion_mat, pr_mat, microf1, macrof1, ratio= SoftmaxRegression(ifname, n, 0.001, 
