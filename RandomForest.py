@@ -37,6 +37,7 @@ print(RandomForest('MobilePricingUpdated.csv', 0.8, 40, 4))
 #Worst combination was n=10 and no random state with around 0.75 for the metrics
 
 """
+old file
 def RandomForest():
     X_train, Y_train, X_test, Y_test = train_test_data('MobilePricingUpdated.csv', 0.8) #runs train_test_split function
     n_range=range(10, 100, 10)
