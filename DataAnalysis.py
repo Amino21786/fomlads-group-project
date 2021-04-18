@@ -9,7 +9,15 @@ def data_analysis(dataset):
     plt.ylabel('Price Range')
     plt.savefig('RAMvsPrice.png')
     return fig
-
-
 data_analysis('MobilePricingUpdated.csv')
+
+#Camera: how many phones vs camera megapixels of primary and front facing camera
+df=pd.read_csv('MobilePricingUpdated.csv') #Importing the preprocessed dataset
+plt.figure(figsize=(10,6))
+df['fc'].hist(alpha=0.5,color='yellow',label='Front camera')
+df['pc'].hist(alpha=0.5,color='blue',label='Primary camera')
+plt.legend()
+plt.xlabel('MegaPixels')
+plt.ylabel('Number of phones')
+
 #plt.show()
