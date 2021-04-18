@@ -24,9 +24,17 @@ def LDA(dataset, n):
     prm = precision_and_recall(cm) #computes precision and recall and represents the in a matrix
     micro_f1 = micro_average_f1_score(cm) #Micro f1, uses the global precision and recall (prone to imbalanced datasets)
     macro_f1 = macro_average_f1_score(prm) #Macro f1, uses the average of individual classes' precision and recalls (better for imbalanced datasets)
-    print("Accuracy on Test set:", acc)
-    print("Confusion Matrix:\n", cm)
-    print("Precision and Recall Matrix: \n:", prm)
-    print("Micro-average F1 Score:", micro_f1)
-    print("Macro-average F1 Score:", macro_f1)
-    print("Time Taken:", time.process_time()-start) #time taken to compute all of it
+    run_time=time.process_time()-start #time taken to compute all of it
+
+    return acc, cm, prm, micro_f1, macro_f1, run_time
+
+
+print(LDA('MobilePricingUpdated.csv',0.8))
+"""
+print("Accuracy on Test set:", acc)
+print("Confusion Matrix:\n", cm)
+print("Precision and Recall Matrix: \n:", prm)
+print("Micro-average F1 Score:", micro_f1)
+print("Macro-average F1 Score:", macro_f1)
+print("Time Taken:", time.process_time()-start) #time taken to compute all of it
+"""

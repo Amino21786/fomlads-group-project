@@ -28,7 +28,7 @@ def RandomForest(dataset, n, n_trees, ran_state):
 
     return acc, cm, prm, micro_f1, macro_f1, run_time
 
-print(RandomForest('MobilePricingUpdated.csv', 0.8, 40, 4))
+acc= RandomForest('MobilePricingUpdated.csv', 0.8, 40, 4)
 
 
 # So I tested the hyperparameters, settled on train test split for 0.8
