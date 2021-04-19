@@ -98,7 +98,7 @@ def SoftmaxRegression(dataset, n, learning_rate, iterations, regularisation):
     macrof1= macro_average_f1_score(pr_mat)
     plt.show()
 
-    return acc_train, acc_test, confusion_mat, pr_mat, microf1, macrof1
+    return acc_train, acc_test, microf1, macrof1
 
 
 

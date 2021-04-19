@@ -26,7 +26,7 @@ def RandomForest(dataset, n, n_trees, ran_state):
     macro_f1 = macro_average_f1_score(prm) #Macro f1, uses the average of individual classes' precision and recalls (better for imbalanced datasets)
     run_time = time.process_time()-start #time taken to compute all of it
 
-    return acc, cm, prm, micro_f1, macro_f1, run_time
+    return acc, micro_f1, macro_f1, run_time
 
 acc= RandomForest('MobilePricingUpdated.csv', 0.8, 40, 4)
 

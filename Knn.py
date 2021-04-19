@@ -29,7 +29,7 @@ def Knn(dataset,n,Kneighbors):
     macro_f1_Knn = macro_average_f1_score(prm_Knn) #Macro f1, uses the average of individual classes' precision and recalls (better for imbalanced datasets)
     run_time_Knn=time.process_time()-start #time taken to compute all of it
 
-    return acc_Knn, cm_Knn, prm_Knn, micro_f1_Knn, macro_f1_Knn, run_time_Knn
+    return acc_Knn, micro_f1_Knn, macro_f1_Knn, run_time_Knn
 
 print(Knn('MobilePricingUpdated.csv',0.8,25))
 
