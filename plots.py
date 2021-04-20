@@ -67,6 +67,7 @@ def oob_error_rf(dataset):
     plt.xlabel('Number of trees (n_estimators)')
     plt.ylabel('OOB Error')
     plt.savefig('RandomForestLossFunctionGraph')
+    plt.close()
     
  
 # not scaled, below:

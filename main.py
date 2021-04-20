@@ -79,7 +79,6 @@ def main(ifname):
     plt.title('Accuracy vs Train-test Splits for all models')
     plt.legend(loc="center right")
     plt.savefig('AccuracyGraph.png')
-    plt.show()
     plt.close()
 
    
@@ -95,7 +94,6 @@ def main(ifname):
     plt.title('F1 Score vs Train-test splits for all models')
     plt.legend(loc="center right")
     plt.savefig('F1ScoreGraph.png')
-    plt.show()
     plt.close()
 
 
