@@ -17,12 +17,10 @@ def preprocessing(dataset):
 
 
 def data_analysis(dataset):
-    df=pd.read_csv(dataset)
-    fig = sns.jointplot(data=df, x='ram', y='price_range', color='blue', kind='kde')
-    plt.xlabel('RAM in MB')
-    plt.ylabel('Price Range')
-    plt.savefig('RAMvsPrice.png')
-    return fig
+    fig, ax = plt.subplots(figsize=(16,16))
+    sns.heatmap(df.corr(), annot = True, fmt= '.1g')
+    plt.title('Correlation between Features')
+    plt.savefig('CorrelationHeatmap')
 data_analysis('MobilePricingUpdated.csv')
 
 #Camera: how many phones vs camera megapixels of primary and front facing camera
