@@ -7,10 +7,22 @@ from SoftmaxRegression import SoftmaxRegression
 from RandomForest import RandomForest
 from Knn import Knn
 from LDA import LDA
+from plots import rf_hyperparameters, oob_error_rf
 
 
 
 def main(ifname):
+    plt.style.use('seaborn-whitegrid')
+
+    #Hyperparameters tuning graphs
+    #RandomForest, optimal choice for n_estimators is 40
+    rf_hyperparameters('MobilePricingUpdated.csv')
+
+    #loss functions graphs
+    #RandomForests
+    oob_error_rf('MobilePricingUpdated.csv')
+
+
     accuracy_train=[]
     accuracy_test=[]
     microf1_scores=[]
@@ -62,7 +74,7 @@ def main(ifname):
     plt.plot(nvals, accuracy_test, label='Accuracy on test data (Logistic)', color ='red')
     plt.plot(nvals, acc_RF, label='Accuracy on test data (Random Forest)', color = 'green')
     plt.plot(nvals,acc_Knnl,label='Accuracy on test data (Knn)', color = 'blue')
-    plt.plot(nvals,acc_LDA, label='Accuracy on test data (LDA)', color ='yellow')
+    plt.plot(nvals,acc_LDA, label='Accuracy on test data (LDA)', color ='purple')
     plt.xlabel('Train-test splits')
     plt.title('Accuracy vs Train-test Splits for all models')
     plt.legend(loc="center right")
@@ -74,7 +86,7 @@ def main(ifname):
     plt.plot(nvals, macrof1_scores, label= 'Macro average f1 score (Logistic)', color='orange')
     plt.plot(nvals, macrof1_RF, label= 'Macro average f1 score (Random Forest)', color='green')
     plt.plot(nvals, microf1_RF, label= 'Micro average f1 score (Random Forest)', color='olive')
-    plt.plot(nvals, macro_f1_Knnl, label= 'Macro average f1 score (Knn)', color='yellow')
+    plt.plot(nvals, macro_f1_Knnl, label= 'Macro average f1 score (Knn)', color='blue')
     plt.plot(nvals, micro_f1_Knnl, label= 'Micro average f1 score (Knn)', color='black')
     plt.plot(nvals, macro_f1_LDA, label= 'Macro average f1 score (LDA)', color='pink')
     plt.plot(nvals, micro_f1_LDA, label= 'Micro average f1 score (LDA)', color='purple')
