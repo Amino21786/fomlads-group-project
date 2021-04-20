@@ -29,7 +29,7 @@ def LDA(dataset, n):
     return acc, micro_f1, macro_f1, run_time
 
 
-print(LDA('MobilePricingUpdated.csv',0.8))
+#print(LDA('MobilePricingUpdated.csv',0.8))
 """
 print("Accuracy on Test set:", acc)
 print("Confusion Matrix:\n", cm)
