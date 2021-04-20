@@ -8,20 +8,21 @@ from RandomForest import RandomForest
 from Knn import Knn
 from LDA import LDA
 from plots import rf_hyperparameters, oob_error_rf
+from plots import Knn_hyperparameters, error_function_Knn
 
 
 
 def main(ifname):
     plt.style.use('seaborn-whitegrid')
 
-    #Hyperparameters tuning graphs
-    #RandomForest, optimal choice for n_estimators is 40
+    #Random Forest graphs:
     rf_hyperparameters('MobilePricingUpdated.csv')
-
-    #loss functions graphs
-    #RandomForests
     oob_error_rf('MobilePricingUpdated.csv')
+    #Knn graphs
+    Knn_hyperparameters('MobilePricingUpdated.csv')
+    error_function_Knn('MobilePricingUpdated.csv')
 
+#Create 3 empty lists for each of the models, in order to append later values in order to create a plot.
 
     accuracy_train=[]
     accuracy_test=[]
@@ -32,7 +33,6 @@ def main(ifname):
     microf1_RF=[]
     macrof1_RF=[]
 
-#Create 3 empty lists, in order to add the values later for the plot.
     acc_Knnl=[]
     micro_f1_Knnl=[]
     macro_f1_Knnl=[]
@@ -69,7 +69,7 @@ def main(ifname):
     
     
 
-    plt.figure()
+    
     plt.plot(nvals, accuracy_train, label='Accuracy on train data (Logistic)', color='red')
     plt.plot(nvals, accuracy_test, label='Accuracy on test data (Logistic)', color ='red')
     plt.plot(nvals, acc_RF, label='Accuracy on test data (Random Forest)', color = 'green')
@@ -79,9 +79,10 @@ def main(ifname):
     plt.title('Accuracy vs Train-test Splits for all models')
     plt.legend(loc="center right")
     plt.savefig('AccuracyGraph.png')
+    plt.show()
     plt.close()
 
-    plt.figure()
+   
     plt.plot(nvals, microf1_scores, label='Micro average f1 score (Logistic)', color='red')
     plt.plot(nvals, macrof1_scores, label= 'Macro average f1 score (Logistic)', color='orange')
     plt.plot(nvals, macrof1_RF, label= 'Macro average f1 score (Random Forest)', color='green')
@@ -94,6 +95,7 @@ def main(ifname):
     plt.title('F1 Score vs Train-test splits for all models')
     plt.legend(loc="center right")
     plt.savefig('F1ScoreGraph.png')
+    plt.show()
     plt.close()
 
 
