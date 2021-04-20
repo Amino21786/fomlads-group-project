@@ -11,21 +11,19 @@ def preprocessing(dataset):
     df_updated=df.drop(['three_g'], axis=1)
     #check if the dataset is balanced across the 4 classes
     print(df_updated["price_range"].value_counts()) #turns out it is evenly distributed between the 4 classes
+
     #Finally update the csv for use
     df_updated.to_csv('MobilePricingUpdated.csv', index=False)
 
 
 def data_analysis(dataset):
     df=pd.read_csv(dataset)
-    fig, ax = plt.subplots(figsize=(16,16))
-    sns.heatmap(df.corr(), annot = True, fmt= '.1g')
-    plt.title('Correlation between Features')
-    plt.savefig('CorrelationHeatmap')
+    fig = sns.jointplot(data=df, x='ram', y='price_range', color='blue', kind='kde')
+    plt.xlabel('RAM in MB')
+    plt.ylabel('Price Range')
+    plt.savefig('RAMvsPrice.png')
     return fig
-
 data_analysis('MobilePricingUpdated.csv')
-
-
 
 #Camera: how many phones vs camera megapixels of primary and front facing camera
 df=pd.read_csv('MobilePricingUpdated.csv') #Importing the preprocessed dataset
