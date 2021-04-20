@@ -34,7 +34,7 @@ def rf_hyperparameters(dataset):
         mi_f1.append(micro_f1)
         ma_f1.append(macro_f1)
 
-    fig = plt.plot(n_range, acc_scores, label='Accuracy on test data')
+    plt.plot(n_range, acc_scores, label='Accuracy on test data')
     plt.title('Test Accuracy vs Number of trees')
     plt.xlabel('Number of trees (n_estimators)')
     plt.ylabel('Test Accuracy')
@@ -42,7 +42,7 @@ def rf_hyperparameters(dataset):
     plt.savefig('RandomForestAccuracyGraph')
     plt.close()
 
-    fig2 = plt.plot(n_range, mi_f1, label='Micro F1 Score')
+    plt.plot(n_range, mi_f1, label='Micro F1 Score')
     plt.plot(n_range, ma_f1, label='Macro F1 Score')
     plt.title('F1 Score vs Number of trees')
     plt.xlabel('Number of trees (n_estimators)')
@@ -50,7 +50,7 @@ def rf_hyperparameters(dataset):
     plt.legend()
     plt.savefig('RandomForestF1ScoreGraph')
     plt.close()
-    return fig, fig2
+    
     
 
 def oob_error_rf(dataset):
@@ -62,12 +62,12 @@ def oob_error_rf(dataset):
         RFClassifier.fit(X_train,Y_train)
         oob_errors.append(1-RFClassifier.oob_score_)
 
-    fig = plt.plot(n_range, oob_errors)
+    plt.plot(n_range, oob_errors)
     plt.title('OOB error vs Number of trees')
     plt.xlabel('Number of trees (n_estimators)')
     plt.ylabel('OOB Error')
     plt.savefig('RandomForestLossFunctionGraph')
-    return fig
+    
  
 # not scaled, below:
 
@@ -94,7 +94,7 @@ def Knn_hyperparameters(dataset):
         mi_f1_Knn.append(micro_f1_Knn)
         ma_f1_Knn.append(macro_f1_Knn)
 
-    fig_Knn=plt.plot(range(1,103,2),acc_scores_Knn,label='Accuracy on test for Knn',color='blue')
+    plt.plot(range(1,103,2),acc_scores_Knn,label='Accuracy on test for Knn')
     plt.title('Test Accuracy vs K neighbors')
     plt.xlabel('Number of neighbors (k neighbors)')
     plt.ylabel('Test Accuracy')
@@ -102,7 +102,7 @@ def Knn_hyperparameters(dataset):
     plt.savefig('KnnAccuracyGraph')
     plt.close()
 
-    fig2_Knn = plt.plot(range(1,103,2),mi_f1_Knn,label='Micro f1 score for Knn',color='blue')
+    plt.plot(range(1,103,2),mi_f1_Knn,label='Micro f1 score for Knn')
     plt.plot(range(1,103,2), ma_f1_Knn, label='Macro F1 Score')
     plt.title('F1 Score vs K neighbors')
     plt.xlabel('Number of neighbors (k neighbors)')
@@ -110,30 +110,27 @@ def Knn_hyperparameters(dataset):
     plt.legend()
     plt.savefig('KnnF1ScoreGraph')
     plt.close()
-    return fig_Knn, fig2_Knn
+    
 
 
-    # Error rate
+# Error rate
     
 def error_function_Knn(dataset):
     error_rate=[]
     X_train, Y_train, X_test, Y_test = train_test_data(dataset,0.8) #runs train_test_split function
-    
     for i in range(1,103,2):
         knnClassifier=KNeighborsClassifier(n_neighbors=i)
         knnClassifier.fit(X_train,Y_train)
-
         y_pred_Knn = knnClassifier.predict(X_test)
-
         error_rate.append(np.mean(y_pred_Knn!=Y_test))
     
-    fig=plt.plot(range(1,103,2),error_rate,color='blue', linestyle='dashed', marker='o',
+    plt.plot(range(1,103,2),error_rate,color='blue', linestyle='dashed', marker='o',
             markerfacecolor='red', markersize=5)
     plt.title('Error Rate vs. K Value')
     plt.xlabel('K neighbors')
     plt.ylabel('Error Rate')
     plt.savefig('Knn Error function')
-    return fig
+    plt.close()
 
 Knn_hyperparameters('MobilePricingUpdated.csv')
 error_function_Knn('MobilePricingUpdated.csv')
