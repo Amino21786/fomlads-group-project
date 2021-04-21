@@ -2,15 +2,22 @@ import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-def data_analysis(dataset):
+def preprocessing(dataset):
     df=pd.read_csv(dataset)
-    fig = sns.jointplot(data=df, x='ram', y='price_range', color='blue', kind='kde')
-    plt.xlabel('RAM in MB')
-    plt.ylabel('Price Range')
-    plt.savefig('RAMvsPrice.png')
-    return fig
-data_analysis('MobilePricingUpdated.csv')
+    #We could remove the three_g column as when a phone has 4_g it automatically has 3_g. Also in everyday now, 4_g is more relevant
+    df_updated=df.drop(['three_g'], axis=1)
+    df_updated.to_csv('MobilePricingUpdated.csv', index=False)
+
+
+def corrleation_heatmap(dataset):
+    df=pd.read_csv(dataset)
+    fig, ax = plt.subplots(figsize=(15,15))
+    sns.heatmap(df.corr(), annot = True, fmt= '.1g', vmin=-1, vmax=1, cmap='coolwarm', mask=np.triu(df.corr()))
+    plt.title('Correlation between Features')
+    plt.savefig('plots/CorrelationHeatmap')
+    plt.close()
+
+
 
 
 df=pd.read_csv('MobilePricingUpdated.csv') #Importing the preprocessed dataset
@@ -22,5 +29,5 @@ plt.legend()
 plt.xlabel('MegaPixels')
 plt.ylabel('Number of phones')
 
-plt.show()
+#plt.show()
 

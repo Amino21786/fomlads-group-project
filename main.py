@@ -3,6 +3,7 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.sparse
+from DataAnalysis import corrleation_heatmap
 from SoftmaxRegression import SoftmaxRegression
 from RandomForest import RandomForest
 from Knn import Knn
@@ -17,13 +18,15 @@ from Knn import ideal_k
 def main(ifname):
     plt.style.use('seaborn-whitegrid')
 
+    #Correlation Heatmap
+    corrleation_heatmap(ifname)
     #Random Forest graphs:
-    rf_hyperparameters('MobilePricingUpdated.csv')
-    oob_error_rf('MobilePricingUpdated.csv')
+    rf_hyperparameters(ifname)
+    oob_error_rf(ifname)
     #Knn graphs and prints ideal k:
-    ideal_k('MobilePricingUpdated.csv')
-    Knn_hyperparameters('MobilePricingUpdated.csv')
-    error_function_Knn('MobilePricingUpdated.csv')
+    ideal_k(ifname)
+    Knn_hyperparameters(ifname)
+    error_function_Knn(ifname)
 
 #Create 3 empty lists for each of the models, in order to append later values in order to create a plot.
 
@@ -89,23 +92,25 @@ def main(ifname):
     plt.plot(nvals,acc_Knnl_scaled, label='Accuracy on test data (Knn_scaled)')
     plt.plot(nvals,acc_LDA, label='Accuracy on test data (LDA)')
     plt.xlabel('Train-test splits')
+    plt.ylabel('Accuracy')
     plt.title('Accuracy vs Train-test Splits for all models')
     plt.legend(loc="center right")
     plt.savefig('plots/Accuracy Graph.png')
     plt.close()
 
    
-    plt.plot(nvals, microf1_scores, label='Micro average f1 score (Logistic)', color='red')
-    plt.plot(nvals, macrof1_scores, label= 'Macro average f1 score (Logistic)', color='orange')
-    plt.plot(nvals, macrof1_RF, label= 'Macro average f1 score (Random Forest)', color='green')
-    plt.plot(nvals, microf1_RF, label= 'Micro average f1 score (Random Forest)', color='olive')
-    plt.plot(nvals, macro_f1_Knnl, label= 'Macro average f1 score (Knn)', color='blue')
-    plt.plot(nvals, micro_f1_Knnl, label= 'Micro average f1 score (Knn)', color='grey')
+    plt.plot(nvals, microf1_scores, label='Micro average f1 score (Logistic)')
+    plt.plot(nvals, macrof1_scores, label= 'Macro average f1 score (Logistic)')
+    plt.plot(nvals, macrof1_RF, label= 'Macro average f1 score (Random Forest)')
+    plt.plot(nvals, microf1_RF, label= 'Micro average f1 score (Random Forest)')
+    plt.plot(nvals, macro_f1_Knnl, label= 'Macro average f1 score (Knn)')
+    plt.plot(nvals, micro_f1_Knnl, label= 'Micro average f1 score (Knn)')
     plt.plot(nvals, macro_f1_Knnl_scaled, label= 'Macro average f1 score (Knn_scaled)')
     plt.plot(nvals, micro_f1_Knnl_scaled, label= 'Micro average f1 score (Knn_scaled)')
-    plt.plot(nvals, macro_f1_LDA, label= 'Macro average f1 score (LDA)', color='pink')
+    plt.plot(nvals, macro_f1_LDA, label= 'Macro average f1 score (LDA)', color='black')
     plt.plot(nvals, micro_f1_LDA, label= 'Micro average f1 score (LDA)', color='purple')
     plt.xlabel('Train-test splits')
+    plt.ylabel('F1 Score')
     plt.title('F1 Score vs Train-test splits for all models')
     plt.legend(loc="center right")
     plt.savefig('plots/F1 Score Graph.png')
