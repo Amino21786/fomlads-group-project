@@ -16,8 +16,6 @@ def LDA(dataset, n):
     lda=LinearDiscriminantAnalysis()
     lda = lda.fit(X_train,Y_train)
     y_pred_LDA = lda.predict(X_test)
-
-
     #5 metrics (Accuracy, confusion Matrix, precision, recall and f1 (both types))
     acc = accuracy(y_pred_LDA, Y_test) #computes accuracy
     cm = confusion_matrix(Y_test, y_pred_LDA) #computes test confusion matrix
@@ -28,12 +26,6 @@ def LDA(dataset, n):
 
     return acc, micro_f1, macro_f1, run_time
 
-LDA('MobilePricingUpdated.csv',0.8)
-"""
-print("Accuracy on Test set:", acc)
-print("Confusion Matrix:\n", cm)
-print("Precision and Recall Matrix: \n:", prm)
-print("Micro-average F1 Score:", micro_f1)
-print("Macro-average F1 Score:", macro_f1)
-print("Time Taken:", time.process_time()-start) #time taken to compute all of it
-"""
+print("---------------------------------------------------------------------")
+print('LDA: The accuracy, micro_f1, macro_f1 and the run_time are the following')
+print(LDA('MobilePricingUpdated.csv',0.8))
