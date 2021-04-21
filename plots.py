@@ -114,7 +114,7 @@ def Knn_hyperparameters(dataset):
     
 
 
-# Error rate
+# Elbow method to illustrate the ideal k for training, by calculating the error_rate and noticing for which k it attains its minimum.
     
 def error_function_Knn(dataset):
     error_rate=[]
