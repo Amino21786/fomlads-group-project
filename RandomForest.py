@@ -29,9 +29,7 @@ def RandomForest(dataset, n, n_trees, ran_state):
     return acc, micro_f1, macro_f1, run_time
 
 #testing purposes
-print("---------------------------------------------------------------------")
-print('RF: The accuracy, micro_f1, macro_f1 and the run_time are the following')
-print(RandomForest('MobilePricingUpdated.csv', 0.8, 40, 4))
+RandomForest('MobilePricingUpdated.csv', 0.8, 40, 4)
 
 
 # So I tested the hyperparameters, settled on train test split for 0.8

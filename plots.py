@@ -40,7 +40,7 @@ def rf_hyperparameters(dataset):
     plt.xlabel('Number of trees (n_estimators)')
     plt.ylabel('Test Accuracy')
     plt.legend()
-    plt.savefig('Random Forest Accuracy Graph')
+    plt.savefig('RandomForestAccuracyGraph')
     plt.close()
 
     plt.plot(n_range, mi_f1, label='Micro F1 Score')
@@ -49,7 +49,7 @@ def rf_hyperparameters(dataset):
     plt.xlabel('Number of trees (n_estimators)')
     plt.ylabel('F1 Score')
     plt.legend()
-    plt.savefig('Random Forest F1 Score Graph')
+    plt.savefig('RandomForestF1ScoreGraph')
     plt.close()
     
     
@@ -67,7 +67,8 @@ def oob_error_rf(dataset):
     plt.title('OOB error vs Number of trees')
     plt.xlabel('Number of trees (n_estimators)')
     plt.ylabel('OOB Error')
-    plt.savefig('Random Forest Loss Function Graph')
+    plt.savefig('RandomForestLossFunctionGraph')
+    plt.close()
     
  
 # not scaled, below:
@@ -100,7 +101,7 @@ def Knn_hyperparameters(dataset):
     plt.xlabel('Number of neighbors (k neighbors)')
     plt.ylabel('Test Accuracy')
     plt.legend()
-    plt.savefig('Knn Accuracy Graph')
+    plt.savefig('KnnAccuracyGraph')
     plt.close()
 
     plt.plot(range(1,103,2),mi_f1_Knn,label='Micro f1 score for Knn')
@@ -109,7 +110,7 @@ def Knn_hyperparameters(dataset):
     plt.xlabel('Number of neighbors (k neighbors)')
     plt.ylabel('F1 Score')
     plt.legend()
-    plt.savefig('Knn F1 Score Graph')
+    plt.savefig('KnnF1ScoreGraph')
     plt.close()
     
 
@@ -154,9 +155,15 @@ def ideal_k(dataset):
     max_value=max(listacc)
     print("The maximum value of accuracy is ", max_value , "and the ideal k to achieve this value is ", 2*listacc.index(max_value)+1)  
     # The step is 2, and we start the counting of indices from 0. So, to find k, we multiply by 2 the index of maximum value of accuracy and then add 1.
-    print("For Knn: List of accuracy is ", listacc) 
+    print("List of accuracy is ", listacc) 
 
-''' These will be saved when running main.py, so there is no need to run them here.
+    #Let us now plot the graph which shows the evolution of accuracy vs values of k from 1 up to and including 101.
+    plt.plot(i_range,listacc)
+    plt.title('Accuracy vs. values of k')
+    plt.xlabel('K neighbors')
+    plt.ylabel('Accuracy')
+    plt.savefig('Ideal k and accuracy')
+    plt.close()
 
 ideal_k('MobilePricingUpdated.csv')
 Knn_hyperparameters('MobilePricingUpdated.csv')
@@ -164,7 +171,7 @@ error_function_Knn('MobilePricingUpdated.csv')
 rf_hyperparameters('MobilePricingUpdated.csv')
 oob_error_rf('MobilePricingUpdated.csv')
 
-'''
+
 
 
 
