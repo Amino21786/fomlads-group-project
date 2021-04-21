@@ -39,7 +39,7 @@ def rf_hyperparameters(dataset):
     plt.xlabel('Number of trees (n_estimators)')
     plt.ylabel('Test Accuracy')
     plt.legend()
-    plt.savefig('RandomForestAccuracyGraph')
+    plt.savefig('Random Forest Accuracy Graph')
     plt.close()
 
     plt.plot(n_range, mi_f1, label='Micro F1 Score')
@@ -48,7 +48,7 @@ def rf_hyperparameters(dataset):
     plt.xlabel('Number of trees (n_estimators)')
     plt.ylabel('F1 Score')
     plt.legend()
-    plt.savefig('RandomForestF1ScoreGraph')
+    plt.savefig('Random Forest F1 Score Graph')
     plt.close()
     
     
@@ -66,8 +66,7 @@ def oob_error_rf(dataset):
     plt.title('OOB error vs Number of trees')
     plt.xlabel('Number of trees (n_estimators)')
     plt.ylabel('OOB Error')
-    plt.savefig('RandomForestLossFunctionGraph')
-    plt.close()
+    plt.savefig('Random Forest Loss Function Graph')
     
  
 # not scaled, below:
@@ -100,7 +99,7 @@ def Knn_hyperparameters(dataset):
     plt.xlabel('Number of neighbors (k neighbors)')
     plt.ylabel('Test Accuracy')
     plt.legend()
-    plt.savefig('KnnAccuracyGraph')
+    plt.savefig('Knn Accuracy Graph')
     plt.close()
 
     plt.plot(range(1,103,2),mi_f1_Knn,label='Micro f1 score for Knn')
@@ -109,7 +108,7 @@ def Knn_hyperparameters(dataset):
     plt.xlabel('Number of neighbors (k neighbors)')
     plt.ylabel('F1 Score')
     plt.legend()
-    plt.savefig('KnnF1ScoreGraph')
+    plt.savefig('Knn F1 Score Graph')
     plt.close()
     
 
@@ -135,42 +134,14 @@ def error_function_Knn(dataset):
 
 
 
-#Finding the ideal k for test_train_split=0.8:
+''' These will be saved when running main.py, so there is no need to run them here.
 
-def ideal_k(dataset):
-    # Train test split can take different values. However, we will choose a=0.8 as in RandomForest.py, to make the test as fair as possible.
-    X_train, Y_train, X_test, Y_test = train_test_data(dataset,0.8) 
-    listacc=[] #Create an empty list
-    i_range=range(1,103,2) # Give different odd values to k_neighbors
-    for i in i_range: 
-        # Start to implement the Knn, using the same data for train_split_test as for Random Forest classifier in order to make the tests as fair as possible.        
-        knnClassifier=KNeighborsClassifier(n_neighbors=i)
-        knnClassifier.fit(X_train,Y_train)
-        y_pred_Knn = knnClassifier.predict(X_test)
-        # Now we shall compute 5 metrics (Accuracy, confusion Matrix, precision, recall and f1 (both types))
-        # We have used accuracy as a very important metric to measure how capable a model is for classification
-        acc=accuracy(y_pred_Knn, Y_test) #computes accuracy
-        listacc.append(acc)
-    max_value=max(listacc)
-    print("The maximum value of accuracy is ", max(listacc), "and the ideal k to achieve this value is ", 2*listacc.index(max_value)+1)  
-    # The step is 2, and we start the counting of indices from 0. So, to find k, we multiply by 2 the index of maximum value of accuracy and then add 1.
-    print("List of accuracy is ", listacc) 
-
-    #Let us now plot the graph which shows the evolution of accuracy vs values of k from 1 up to and including 101.
-    plt.plot(i_range,listacc)
-    plt.title('Accuracy vs. values of k')
-    plt.xlabel('K neighbors')
-    plt.ylabel('Accuracy')
-    plt.savefig('Ideal k and accuracy')
-    plt.close()
-
-ideal_k('MobilePricingUpdated.csv')
 Knn_hyperparameters('MobilePricingUpdated.csv')
 error_function_Knn('MobilePricingUpdated.csv')
 rf_hyperparameters('MobilePricingUpdated.csv')
 oob_error_rf('MobilePricingUpdated.csv')
 
-
+'''
 
 
 
