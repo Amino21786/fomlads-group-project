@@ -39,7 +39,7 @@ def rf_hyperparameters(dataset):
     plt.xlabel('Number of trees (n_estimators)')
     plt.ylabel('Test Accuracy')
     plt.legend()
-    plt.savefig('Random Forest Accuracy Graph')
+    plt.savefig('plots/Random Forest Accuracy Graph')
     plt.close()
 
     plt.plot(n_range, mi_f1, label='Micro F1 Score')
@@ -48,7 +48,7 @@ def rf_hyperparameters(dataset):
     plt.xlabel('Number of trees (n_estimators)')
     plt.ylabel('F1 Score')
     plt.legend()
-    plt.savefig('Random Forest F1 Score Graph')
+    plt.savefig('plots/Random Forest F1 Score Graph')
     plt.close()
     
     
@@ -66,7 +66,7 @@ def oob_error_rf(dataset):
     plt.title('OOB error vs Number of trees')
     plt.xlabel('Number of trees (n_estimators)')
     plt.ylabel('OOB Error')
-    plt.savefig('Random Forest Loss Function Graph')
+    plt.savefig('plots/Random Forest Loss Function Graph')
     plt.close()
     
  
@@ -100,7 +100,7 @@ def Knn_hyperparameters(dataset):
     plt.xlabel('Number of neighbors (k neighbors)')
     plt.ylabel('Test Accuracy')
     plt.legend()
-    plt.savefig('Knn Accuracy Graph')
+    plt.savefig('plots/Knn Accuracy Graph')
     plt.close()
 
     plt.plot(range(1,103,2),mi_f1_Knn,label='Micro f1 score for Knn')
@@ -109,7 +109,7 @@ def Knn_hyperparameters(dataset):
     plt.xlabel('Number of neighbors (k neighbors)')
     plt.ylabel('F1 Score')
     plt.legend()
-    plt.savefig('Knn F1 Score Graph')
+    plt.savefig('plots/Knn F1 Score Graph')
     plt.close()
     
 
@@ -130,7 +130,7 @@ def error_function_Knn(dataset):
     plt.title('Error Rate vs. K Value')
     plt.xlabel('K neighbors')
     plt.ylabel('Error Rate')
-    plt.savefig('Knn Error function')
+    plt.savefig('plots/Knn Error function')
     plt.close()
 
 

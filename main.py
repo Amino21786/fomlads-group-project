@@ -8,7 +8,7 @@ from RandomForest import RandomForest
 from Knn import Knn
 from Knn import Knn_scaled
 from LDA import LDA
-from plots import rf_hyperparameters, oob_error_rf, Knn_hyperparameters, error_function_Knn
+from plots.plots import rf_hyperparameters, oob_error_rf, Knn_hyperparameters, error_function_Knn
 from Knn import ideal_k
 
 
@@ -91,7 +91,7 @@ def main(ifname):
     plt.xlabel('Train-test splits')
     plt.title('Accuracy vs Train-test Splits for all models')
     plt.legend(loc="center right")
-    plt.savefig('Accuracy Graph.png')
+    plt.savefig('plots/Accuracy Graph.png')
     plt.close()
 
    
@@ -108,7 +108,7 @@ def main(ifname):
     plt.xlabel('Train-test splits')
     plt.title('F1 Score vs Train-test splits for all models')
     plt.legend(loc="center right")
-    plt.savefig('F1 Score Graph.png')
+    plt.savefig('plots/F1 Score Graph.png')
     plt.close()
 
 
