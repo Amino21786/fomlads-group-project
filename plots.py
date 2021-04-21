@@ -17,12 +17,12 @@ warnings.filterwarnings("ignore")
 
 def rf_hyperparameters(dataset):
     X_train, Y_train, X_test, Y_test = train_test_data(dataset, 0.8) #runs train_test_split function
-    n_range=range(10, 100)
+    n_range=range(10, 100, 2)
     acc_scores=[]
     mi_f1=[]
     ma_f1=[]
     for i in n_range:
-        RFClassifier = RandomForestClassifier(n_estimators=i, random_state=4, max_features='log2')
+        RFClassifier = RandomForestClassifier(n_estimators=i, random_state=4)
         RFClassifier.fit(X_train,Y_train)
         y_pred_RF = RFClassifier.predict(X_test)
         acc = accuracy(y_pred_RF, Y_test) 
@@ -34,7 +34,6 @@ def rf_hyperparameters(dataset):
         mi_f1.append(micro_f1)
         ma_f1.append(macro_f1)
 
-    print("For Random Forest, the maximum value for accuracy, micro F1 And macro F1 scores are ",max(acc_scores),", ",max(mi_f1),", ",max(ma_f1), " respectively. These are achieved at n_estimator =", acc_scores.index(max(acc_scores)+1))
     plt.plot(n_range, acc_scores, label='Accuracy on test data')
     plt.title('Test Accuracy vs Number of trees')
     plt.xlabel('Number of trees (n_estimators)')
@@ -56,7 +55,7 @@ def rf_hyperparameters(dataset):
 
 def oob_error_rf(dataset):
     X_train, Y_train, X_test, Y_test = train_test_data(dataset, 0.8) #runs train_test_split function
-    n_range=range(10,100)
+    n_range=range(15,100, 2)
     oob_errors=[]
     for i in n_range:
         RFClassifier = RandomForestClassifier(n_estimators=i, oob_score=True, random_state=4)
@@ -131,7 +130,7 @@ def error_function_Knn(dataset):
     plt.title('Error Rate vs. K Value')
     plt.xlabel('K neighbors')
     plt.ylabel('Error Rate')
-    plt.savefig('KnnErrorFunction')
+    plt.savefig('Knn Error function')
     plt.close()
 
 
@@ -153,7 +152,7 @@ def ideal_k(dataset):
         acc=accuracy(y_pred_Knn, Y_test) #computes accuracy
         listacc.append(acc)
     max_value=max(listacc)
-    print("The maximum value of accuracy is ", max_value , "and the ideal k to achieve this value is ", 2*listacc.index(max_value)+1)  
+    print("The maximum value of accuracy is ", max(listacc), "and the ideal k to achieve this value is ", 2*listacc.index(max_value)+1)  
     # The step is 2, and we start the counting of indices from 0. So, to find k, we multiply by 2 the index of maximum value of accuracy and then add 1.
     print("List of accuracy is ", listacc) 
 
