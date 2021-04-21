@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 import warnings
-from SoftmaxRegression import SoftmaxRegression
+#from SoftmaxRegression import SoftmaxRegression
 from sklearn.ensemble import RandomForestClassifier
 from modelconstruct import train_test_data
 from metrics import accuracy
@@ -22,7 +22,7 @@ def rf_hyperparameters(dataset):
     mi_f1=[]
     ma_f1=[]
     for i in n_range:
-        RFClassifier = RandomForestClassifier(n_estimators=i, random_state=4)
+        RFClassifier = RandomForestClassifier(n_estimators=i, random_state=4, max_features=0.2)
         RFClassifier.fit(X_train,Y_train)
         y_pred_RF = RFClassifier.predict(X_test)
         acc = accuracy(y_pred_RF, Y_test) 
@@ -146,4 +146,4 @@ oob_error_rf('MobilePricingUpdated.csv')
 
 
 
-
+rf_hyperparameters('MobilePricingUpdated.csv')

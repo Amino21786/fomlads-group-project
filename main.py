@@ -8,7 +8,7 @@ from RandomForest import RandomForest
 from Knn import Knn
 from Knn import Knn_scaled
 from LDA import LDA
-from plots.plots import rf_hyperparameters, oob_error_rf, Knn_hyperparameters, error_function_Knn
+from plots import rf_hyperparameters, oob_error_rf, Knn_hyperparameters, error_function_Knn
 from Knn import ideal_k
 
 
