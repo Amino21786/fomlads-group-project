@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 import warnings
-#from SoftmaxRegression import SoftmaxRegression
+from SoftmaxRegression import SoftmaxRegression
 from sklearn.ensemble import RandomForestClassifier
 from modelconstruct import train_test_data
 from metrics import accuracy
