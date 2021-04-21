@@ -76,12 +76,14 @@ from metrics import confusion_matrix
 from metrics import precision_and_recall
 from metrics import micro_average_f1_score
 from metrics import macro_average_f1_score
-
+import time
 
 
 np.random.seed(42)
 def SoftmaxRegression(dataset, n, learning_rate, iterations, regularisation):
+    
     x_train, Y_train, x_test, Y_test= train_test_data (dataset, n)
+    start=time.process_time()
     X_train = standardscaler(x_train)
     X_test = standardscaler(x_test)
     w=np.random.rand(X_train.shape[1]+1,len(np.unique(Y_train)))
@@ -96,9 +98,14 @@ def SoftmaxRegression(dataset, n, learning_rate, iterations, regularisation):
     pr_mat=precision_and_recall(confusion_mat)
     microf1= micro_average_f1_score(confusion_mat)
     macrof1= macro_average_f1_score(pr_mat)
+    run_time = time.process_time()-start #time taken to compute all of it
     plt.show()
 
     return acc_train, acc_test, microf1, macrof1
+
+print("---------------------------------------------------------------------")
+print('SoftmaxRegression: The accuracy, micro_f1, macro_f1 and the run_time are the following')
+print(SoftmaxRegression('MobilePricingUpdated.csv',0.8, 0.001, 3000, 1))
 
 
 
