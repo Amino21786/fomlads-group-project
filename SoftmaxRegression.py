@@ -101,7 +101,7 @@ def SoftmaxRegression(dataset, n, learning_rate, iterations, regularisation):
     run_time = time.process_time()-start #time taken to compute all of it
     plt.show()
 
-    return acc_train, acc_test, microf1, macrof1
+    return acc_test, microf1, macrof1
 
 print("---------------------------------------------------------------------")
 print('SoftmaxRegression: The accuracy, micro_f1, macro_f1 and the run_time are the following')
