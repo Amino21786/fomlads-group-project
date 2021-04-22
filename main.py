@@ -29,8 +29,6 @@ def main(ifname):
     error_function_Knn(ifname)
 
 #Create 3 empty lists for each of the models, in order to append later values in order to create a plot.
-
-    accuracy_train=[]
     accuracy_test=[]
     microf1_scores=[]
     macrof1_scores=[]
@@ -53,7 +51,7 @@ def main(ifname):
 
     nvals=[0.5,0.6,0.7,0.8,0.9]
     for n in nvals:
-        acc_train, acc_test, microf1, macrof1= SoftmaxRegression(ifname, n, 0.001, iterations=3000, regularisation=1)
+        acc_test, microf1, macrof1= SoftmaxRegression(ifname, n, 0.001, iterations=3000, regularisation=1)
         acc_rf, micro_f1_rf, macro_f1_rf, run_time_rf = RandomForest(ifname, n, 40, 4)
         acc_Knn, micro_f1_Knn, macro_f1_Knn, run_time_Knn = Knn(ifname,n,25)
         acc_Knn_scaled, micro_f1_Knn_scaled, macro_f1_Knn_scaled, run_time_Knn_scaled = Knn_scaled(ifname,n,77)
