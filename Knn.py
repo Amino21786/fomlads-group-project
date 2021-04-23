@@ -1,5 +1,6 @@
 from sklearn.neighbors import KNeighborsClassifier
 from modelconstruct import train_test_data
+from modelconstruct import standardscaler # Importing this for the scaled data
 from metrics import accuracy
 from metrics import confusion_matrix
 from metrics import precision_and_recall
@@ -10,7 +11,6 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt
 np.random.seed(42) #seed for repeatable results
-from SoftmaxRegression import standardscaler # Importing this for the scaled data
 plt.style.use('seaborn-whitegrid')
 
 

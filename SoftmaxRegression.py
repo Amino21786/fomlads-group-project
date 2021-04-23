@@ -62,15 +62,10 @@ def predictionfromprobability(x,w):
     prediction= np.argmax(probability, axis=1)
     return probability, prediction
 
-def standardscaler(array):
-    for i in range(array.shape[1]):
-        column=array[:,i]
-        mean=column.mean()
-        sd=column.std()
-        array[:,i]=(array[:,i]-mean)/sd
-    return array
+
 
 from modelconstruct import train_test_data
+from modelconstruct import standardscaler
 from metrics import accuracy
 from metrics import confusion_matrix
 from metrics import precision_and_recall

@@ -56,14 +56,15 @@ def rf_hyperparameters(dataset):
 
 def oob_error_rf(dataset):
     X_train, Y_train, X_test, Y_test = train_test_data(dataset, 0.8) #runs train_test_split function
-    n_range=range(15,100)
+    n_range=range(10,100)
     oob_errors=[]
     for i in n_range:
         RFClassifier = RandomForestClassifier(n_estimators=i, oob_score=True, random_state=4)
         RFClassifier.fit(X_train,Y_train)
         oob_errors.append(1-RFClassifier.oob_score_)
 
-    plt.plot(n_range, oob_errors)
+    plt.plot(n_range, oob_errors, color='blue', linestyle='dashed', marker='o',
+            markerfacecolor='red', markersize=3)
     plt.title('OOB error vs Number of trees')
     plt.xlabel('Number of trees (n_estimators)')
     plt.ylabel('OOB Error')

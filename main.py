@@ -57,7 +57,7 @@ def main(ifname):
         acc_Knn_scaled, micro_f1_Knn_scaled, macro_f1_Knn_scaled, run_time_Knn_scaled = Knn_scaled(ifname,n,77)
         accLDA, microf1_LDA, macrof1_LDA, runtime_LDA = LDA(ifname, n)
 
-        accuracy_train.append(acc_train)
+        
         accuracy_test.append(acc_test)
         microf1_scores.append(microf1)
         macrof1_scores.append(macrof1)
@@ -80,10 +80,6 @@ def main(ifname):
 
     
     
-    
-
-    
-    plt.plot(nvals, accuracy_train, label='Accuracy on train data (Logistic)')
     plt.plot(nvals, accuracy_test, label='Accuracy on test data (Logistic)')
     plt.plot(nvals, acc_RF, label='Accuracy on test data (Random Forest)')
     plt.plot(nvals,acc_Knnl,label='Accuracy on test data (Knn)')

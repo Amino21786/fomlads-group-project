@@ -16,3 +16,11 @@ def train_test_data(dataset, n):
     y_test = ys[test_index_array]
 
     return x_train, y_train, x_test, y_test
+
+def standardscaler(array):
+    for i in range(array.shape[1]):
+        column=array[:,i]
+        mean=column.mean()
+        sd=column.std()
+        array[:,i]=(array[:,i]-mean)/sd
+    return array
