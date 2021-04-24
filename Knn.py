@@ -15,7 +15,7 @@ plt.style.use('seaborn-whitegrid')
 
 
 
-# Non_scaled:
+# Code for UNSCALED data:
 
 # n is the test_train_split value below:
 def Knn(dataset,n,Kneighbors):
@@ -42,7 +42,7 @@ def Knn(dataset,n,Kneighbors):
 
 
 
-# SCALED
+# Code for SCALED data
 
 def Knn_scaled(dataset,n,Kneighbors):
     x_train, Y_train, x_test, Y_test = train_test_data(dataset,n) #runs train_test_split function
@@ -85,15 +85,13 @@ def ideal_k(dataset):
         listacc.append(acc)
     max_value=max(listacc)
     print('---------------------------------------------')
-    print("For Knn: The maximum value of accuracy is ", max(listacc), "and the ideal k to achieve this value is ", 2*listacc.index(max_value)+1)  
+    print("For Knn for unscaled data: The maximum value of accuracy is ", max(listacc), "and the ideal k to achieve this value is ", 2*listacc.index(max_value)+1)  
     # The step is 2, and we start the counting of indices from 0. So, to find k, we multiply by 2 the index of maximum value of accuracy and then add 1.
     
 print("---------------------------------------------------------------------")
-print('Knn: The accuracy, micro_f1, macro_f1 and the run_time for non-scaled data are the following')
+print('Knn for unscaled data: The accuracy, micro_f1, macro_f1 and the run_time are the following')
 print(Knn('MobilePricingUpdated.csv',0.8,25))
-print('Knn: The accuracy, micro_f1, macro_f1 and the run_time for scaled data are the following')
+print('Knn for scaled data: The accuracy, micro_f1, macro_f1 and the run_time are the following')
 print(Knn_scaled('MobilePricingUpdated.csv',0.8,77))
-
-
 
 #For the scaled data, the ideal k is 77 and it gives greatest accuracy of 0.665
