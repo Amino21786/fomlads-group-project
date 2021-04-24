@@ -69,7 +69,7 @@ def Knn_scaled(dataset,n,Kneighbors):
 
 #Finding the ideal k for test_train_split=0.8:
 
-def ideal_k(dataset):
+def ideal_k_unscaled(dataset):
     # Train test split can take different values. However, we will choose a=0.8 as in RandomForest.py, to make the test as fair as possible.
     X_train, Y_train, X_test, Y_test = train_test_data(dataset,0.8) 
     listacc=[] #Create an empty list
@@ -87,7 +87,26 @@ def ideal_k(dataset):
     print('---------------------------------------------')
     print("For Knn for unscaled data: The maximum value of accuracy is ", max(listacc), "and the ideal k to achieve this value is ", 2*listacc.index(max_value)+1)  
     # The step is 2, and we start the counting of indices from 0. So, to find k, we multiply by 2 the index of maximum value of accuracy and then add 1.
-    
+def ideal_k_scaled(dataset):
+# Train test split can take different values. However, we will choose a=0.8 as in RandomForest.py, to make the test as fair as possible.
+    x_train, Y_train, x_test, Y_test = train_test_data(dataset,0.8) #runs train_test_split function 
+    X_train=standardscaler(x_train)
+    X_test = standardscaler(x_test)
+    listacc=[] #Create an empty list
+    i_range=range(1,103,2) # Give different odd values to k_neighbors
+    for i in i_range: 
+        # Start to implement the Knn, using the same data for train_split_test as for Random Forest classifier in order to make the tests as fair as possible.        
+        knnClassifier=KNeighborsClassifier(n_neighbors=i)
+        knnClassifier.fit(X_train,Y_train)
+        y_pred_Knn = knnClassifier.predict(X_test)
+        # Now we shall compute 5 metrics (Accuracy, confusion Matrix, precision, recall and f1 (both types))
+        # We have used accuracy as a very important metric to measure how capable a model is for classification
+        acc=accuracy(y_pred_Knn, Y_test) #computes accuracy
+        listacc.append(acc)
+    max_value=max(listacc)
+    print('---------------------------------------------')
+    print("For Knn for scaled data: The maximum value of accuracy is ", max(listacc), "and the ideal k to achieve this value is ", 2*listacc.index(max_value)+1)  
+
 print("---------------------------------------------------------------------")
 print('Knn for unscaled data: The accuracy, micro_f1, macro_f1 and the run_time are the following')
 print(Knn('MobilePricingUpdated.csv',0.8,25))
