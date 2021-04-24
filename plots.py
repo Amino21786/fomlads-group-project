@@ -97,21 +97,21 @@ def Knn_hyperparameters(dataset):
         mi_f1_Knn.append(micro_f1_Knn)
         ma_f1_Knn.append(macro_f1_Knn)
 
-    plt.plot(range(1,103,2),acc_scores_Knn,label='Accuracy on test for Knn')
-    plt.title('Test Accuracy vs K neighbors')
+    plt.plot(range(1,103,2),acc_scores_Knn,label='Accuracy on test for Knn for unscaled data')
+    plt.title('Test Accuracy vs K neighbors  for unscaled data')
     plt.xlabel('Number of neighbors (k neighbors)')
     plt.ylabel('Test Accuracy')
     plt.legend()
-    plt.savefig('plots/Knn Accuracy Graph')
+    plt.savefig('plots/Knn Accuracy Graph for unscaled data')
     plt.close()
 
-    plt.plot(range(1,103,2),mi_f1_Knn,label='Micro f1 score for Knn')
-    plt.plot(range(1,103,2), ma_f1_Knn, label='Macro F1 Score')
-    plt.title('F1 Score vs K neighbors')
+    plt.plot(range(1,103,2),mi_f1_Knn,label='Micro f1 score for Knn for unscaled data')
+    plt.plot(range(1,103,2), ma_f1_Knn, label='Macro F1 Score for unscaled data')
+    plt.title('F1 Score vs K neighbors for unscaled data')
     plt.xlabel('Number of neighbors (k neighbors)')
     plt.ylabel('F1 Score')
     plt.legend()
-    plt.savefig('plots/Knn F1 Score Graph')
+    plt.savefig('plots/Knn F1 Score Graph for unscaled data')
     plt.close()
     
 
@@ -129,10 +129,10 @@ def error_function_Knn(dataset):
     
     plt.plot(range(1,103,2),error_rate,color='blue', linestyle='dashed', marker='o',
             markerfacecolor='red', markersize=5)
-    plt.title('Error Rate vs. K Value')
+    plt.title('Error Rate vs. K Value for unscaled data')
     plt.xlabel('K neighbors')
     plt.ylabel('Error Rate')
-    plt.savefig('plots/Knn Error function')
+    plt.savefig('plots/Knn Error function for unscaled data')
     plt.close()
 
 
