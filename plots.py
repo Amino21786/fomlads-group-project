@@ -98,7 +98,7 @@ def Knn_hyperparameters(dataset):
         ma_f1_Knn.append(macro_f1_Knn)
 
     plt.plot(range(1,103,2),acc_scores_Knn,label='Accuracy on test for Knn for unscaled data')
-    plt.title('Test Accuracy vs K neighbors')
+    plt.title('Test Accuracy vs K neighbors  for unscaled data')
     plt.xlabel('Number of neighbors (k neighbors)')
     plt.ylabel('Test Accuracy')
     plt.legend()
@@ -107,7 +107,7 @@ def Knn_hyperparameters(dataset):
 
     plt.plot(range(1,103,2),mi_f1_Knn,label='Micro f1 score for Knn for unscaled data')
     plt.plot(range(1,103,2), ma_f1_Knn, label='Macro F1 Score for unscaled data')
-    plt.title('F1 Score vs K neighbors')
+    plt.title('F1 Score vs K neighbors for unscaled data')
     plt.xlabel('Number of neighbors (k neighbors)')
     plt.ylabel('F1 Score')
     plt.legend()
