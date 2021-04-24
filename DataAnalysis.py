@@ -11,11 +11,12 @@ def preprocessing(dataset):
 
 def corrleation_heatmap(dataset):
     df=pd.read_csv(dataset)
-    fig, ax = plt.subplots(figsize=(15,15))
-    sns.heatmap(df.corr(), annot = True, fmt= '.1g', vmin=-1, vmax=1, cmap='coolwarm',  cbar_kws= {'orientation': 'horizontal'} )
+    plt.subplots(figsize=(15,13))
+    sns.heatmap(df.corr(), annot = True, fmt='.1g', linewidths=.5, vmin=-1, vmax=1, cmap='coolwarm',  cbar_kws= {'orientation': 'horizontal'} )
     plt.title('Correlation between Features')
     plt.savefig('plots/CorrelationHeatmap')
     plt.close()
+
 
 
 
