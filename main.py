@@ -10,7 +10,7 @@ from Knn import Knn
 from Knn import Knn_scaled
 from LDA import LDA
 from plots import rf_hyperparameters, oob_error_rf, Knn_hyperparameters, error_function_Knn
-from Knn import ideal_k
+from Knn import ideal_k_scaled, ideal_k_unscaled
 
 
 
@@ -24,7 +24,8 @@ def main(ifname):
     rf_hyperparameters(ifname)
     oob_error_rf(ifname)
     #Knn graphs and prints ideal k:
-    ideal_k(ifname)
+    ideal_k_scaled(ifname)
+    ideal_k_unscaled(ifname)
     Knn_hyperparameters(ifname)
     error_function_Knn(ifname)
 
