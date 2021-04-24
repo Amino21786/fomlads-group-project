@@ -17,7 +17,7 @@ from Knn import ideal_k_scaled, ideal_k_unscaled
 
 def main(ifname):
     plt.style.use('seaborn-whitegrid')
-    Knn_hyperparameters(ifname)
+    
     #Correlation Heatmap
     corrleation_heatmap(ifname)
     #Random Forest graphs:
@@ -26,6 +26,7 @@ def main(ifname):
     #Knn graphs and prints ideal k:
     ideal_k_scaled(ifname)
     ideal_k_unscaled(ifname)
+    Knn_hyperparameters(ifname)
     error_function_Knn(ifname)
 
 #Create 3 empty lists for each of the models, in order to append later values in order to create a plot.
@@ -92,17 +93,17 @@ def main(ifname):
     plt.savefig('plots/Accuracy Graph.png')
     plt.close()
 
-   
-    plt.plot(nvals, microf1_scores, label='Micro average f1 score (Logistic)')
-    plt.plot(nvals, macrof1_scores, label= 'Macro average f1 score (Logistic)')
-    plt.plot(nvals, macrof1_RF, label= 'Macro average f1 score (Random Forest)')
-    plt.plot(nvals, microf1_RF, label= 'Micro average f1 score (Random Forest)')
-    plt.plot(nvals, macro_f1_Knnl, label= 'Macro average f1 score (Knn_unscaled)')
-    plt.plot(nvals, micro_f1_Knnl, label= 'Micro average f1 score (Knn_unscaled)')
-    plt.plot(nvals, macro_f1_Knnl_scaled, label= 'Macro average f1 score (Knn_scaled)')
-    plt.plot(nvals, micro_f1_Knnl_scaled, label= 'Micro average f1 score (Knn_scaled)')
     plt.plot(nvals, macro_f1_LDA, label= 'Macro average f1 score (LDA)', color='black')
     plt.plot(nvals, micro_f1_LDA, label= 'Micro average f1 score (LDA)', color='purple')
+    plt.plot(nvals, macro_f1_Knnl, label= 'Macro average f1 score (Knn_unscaled)', color='red')
+    plt.plot(nvals, micro_f1_Knnl, label= 'Micro average f1 score (Knn_unscaled)', color='tomato')
+    plt.plot(nvals, macrof1_RF, label= 'Macro average f1 score (Random Forest)', color='green')
+    plt.plot(nvals, microf1_RF, label= 'Micro average f1 score (Random Forest)', color='olive')
+    plt.plot(nvals, macro_f1_Knnl_scaled, label= 'Macro average f1 score (Knn_scaled)', color='brown')
+    plt.plot(nvals, micro_f1_Knnl_scaled, label= 'Micro average f1 score (Knn_scaled)', color='peru')
+    plt.plot(nvals, microf1_scores, label='Micro average f1 score (Logistic)', color='blue')
+    plt.plot(nvals, macrof1_scores, label= 'Macro average f1 score (Logistic)', color='cyan')
+    
     plt.xlabel('Train-test splits')
     plt.ylabel('F1 Score')
     plt.title('F1 Score vs Train-test splits for all models')
