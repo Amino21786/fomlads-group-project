@@ -17,7 +17,7 @@ from Knn import ideal_k_scaled, ideal_k_unscaled
 
 def main(ifname):
     plt.style.use('seaborn-whitegrid')
-
+    Knn_hyperparameters(ifname)
     #Correlation Heatmap
     corrleation_heatmap(ifname)
     #Random Forest graphs:
@@ -26,7 +26,6 @@ def main(ifname):
     #Knn graphs and prints ideal k:
     ideal_k_scaled(ifname)
     ideal_k_unscaled(ifname)
-    Knn_hyperparameters(ifname)
     error_function_Knn(ifname)
 
 #Create 3 empty lists for each of the models, in order to append later values in order to create a plot.
