@@ -1,0 +1,13 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: osx-64
+
+https://repo.anaconda.com/pkgs/main/osx-64/numpy-base-1.19.1-py37hcfb5961_0.conda
+https://repo.anaconda.com/pkgs/main/osx-64/pip-20.2.3-py37_0.conda
+https://repo.anaconda.com/pkgs/main/osx-64/pylint-2.6.0-py37_0.conda
+https://repo.anaconda.com/pkgs/main/osx-64/matplotlib-3.3.1-0.conda
+https://repo.anaconda.com/pkgs/main/osx-64/matplotlib-base-3.3.1-py37h181983e_0.conda
+https://repo.anaconda.com/pkgs/main/osx-64/numpy-1.19.1-py37h3b9f5b6_0.conda
+https://repo.anaconda.com/pkgs/main/osx-64/pandas-1.1.2-py37hb1e8313_0.conda
+https://repo.anaconda.com/pkgs/main/osx-64/scipy-1.5.2-py37h912ce22_0.conda
+https://repo.anaconda.com/pkgs/main/osx-64/scikit-learn-0.23.2-py37h959d312_0.conda
