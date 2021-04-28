@@ -10,12 +10,16 @@ In this repository we will investigate the patterns of this dataset. The 4 model
 
 
 The 4 classes in this task Price ranges in the dataset and are the following:
-0 - low cost
-1 - medium cost
-2 - high cost
-3 - very high cost
+- 0 (low cost)
+- 1 (medium cost)
+- 2 (high cost)
+- 3 (very high cost)
 
-
+## Functionality of the files
+In this folder, we have 9 Python files, all handling different aspects of the enitre project:
+- data.py -(Contains the preprocessing of the dataset and a correlation heatmap function for data analysis of the dataset)
+- modelconstruct.py
+    fshfhf ()
 
 ## Potential references:
 
