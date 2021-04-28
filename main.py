@@ -40,16 +40,16 @@ def main(ifname):
     macrof1_RF_scores=[]
 # Knn non-scaled
     acc_Knn_scores=[]
-    micro_f1_Knn_scores=[]
-    macro_f1_Knn_scores=[]
+    microf1_Knn_scores=[]
+    macrof1_Knn_scores=[]
 # Knn scaled
     acc_Knn_scaled_scores=[]
-    micro_f1_Knn_scaled_scores=[]
-    macro_f1_Knn_scaled_scores=[]
+    microf1_Knn_scaled_scores=[]
+    macrof1_Knn_scaled_scores=[]
 # LDA
     acc_LDA_scores=[]
-    micro_f1_LDA_scores=[]
-    macro_f1_LDA_scores=[]
+    microf1_LDA_scores=[]
+    macrof1_LDA_scores=[]
 
     nvals=[0.5,0.6,0.7,0.8,0.9] #train-test splits
     for n in nvals:
@@ -71,14 +71,14 @@ def main(ifname):
         macrof1_RF_scores.append(macrof1_rf)
 
         acc_Knn_scores.append(acc_Knn)
-        micro_f1_Knn_scores.append(microf1_Knn)
-        macro_f1_Knn_scores.append(macrof1_Knn)
+        microf1_Knn_scores.append(microf1_Knn)
+        macrof1_Knn_scores.append(macrof1_Knn)
 
         acc_Knn_scaled_scores.append(acc_Knn_scaled)
         microf1_Knn_scaled_scores.append(microf1_Knn_scaled)
         macrof1_Knn_scaled_scores.append(macrof1_Knn_scaled)
 
-        acc_LDA_scores.append(accLDA)
+        acc_LDA_scores.append(acc_LDA)
         microf1_LDA_scores.append(microf1_LDA)
         macrof1_LDA_scores.append(macrof1_LDA)
 
