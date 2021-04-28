@@ -41,7 +41,9 @@ In this project we have used the following Python libraries:
 ## Interface instructions
 
 Main command for plots and results
-'python main.py <DATA FILE> <COMMAND LINE OPTIONS/FLAGS>'
+```
+python main.py MobilePricingUpdated.csv
+```
 'python main.py MobilePricingUpdated.csv'
 
 ## Reproducing the results 
