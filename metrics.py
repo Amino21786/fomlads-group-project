@@ -10,6 +10,7 @@ import pandas as pd
 def accuracy(y_pred, y_test):
   return np.sum(y_pred == y_test)/y_test.size
 
+# N X N matrix of the true positives, true negatives, false positives and false negatives of the dataset, in our case it is a 4 x 4 matrix
 def confusion_matrix(Y, Y_predict):
   K = len(np.unique(Y)) #how many unique elements in preidictions and ground truths (here it is 4)
   cm = np.zeros((K, K)) #4x4 matrix

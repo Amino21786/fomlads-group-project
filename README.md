@@ -17,9 +17,13 @@ The 4 classes in this task Price ranges in the dataset and are the following:
 
 ## Functionality of the files
 In this folder, we have 9 Python files, all handling different aspects of the enitre project:
-- data.py -(Contains the preprocessing of the dataset and a correlation heatmap function for data analysis of the dataset)
-- modelconstruct.py
-    fshfhf ()
+- data.py -The preprocessing of the dataset and a correlation heatmap function for data analysis of the dataset
+- modelconstruct.py - Contains 2 functions, one for the general train-test splitting of the dataset and another for the standardisation of the dataset
+- metrics.py - Has 5 functions setting out the 5 metrics that are explored in this project (Accuracy, confusion matrix, precision, recall and F1 Score), with some functions used again further down the line to calculate another metric (e.g precision and recall for F1 score)
+- SoftmaxRegression.py, LDA.py, Knn.py and RandomForest.py - These contain the construction of the models investigated in this project in their respective files, they ran with their optimal hyperparameters
+- plots.py - Holds 4 functions for hyperparameter analysis of 2 models (Random Forest and KNN) and their error functions which are then plotted
+- main.py - Takes all the above together to provide a succinct overview of the project, runs all the models and displays their respective analysis graphs discussed in the Group Report. Ran upon a command line command stated below in this file
+
 
 ## Potential references:
 
