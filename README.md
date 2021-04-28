@@ -34,7 +34,7 @@ In this project we have used the following Python libraries:
 - Pandas (For helping to manipulate the dataset in a reliable way)
 - Time (For duration of model calculations)
 - sklearn (For the 2 models outside of lectures)
-- Scipy (For Softmax Regression model)
+- Scipy (For construction of one-hot vectors for Softmax Regression)
 - sys (For the main Python file to run the experiments)
 - warnings 
 
