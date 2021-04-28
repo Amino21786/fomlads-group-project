@@ -24,6 +24,8 @@ In this folder, we have 9 Python files, all handling different aspects of the en
 - plots.py - Holds 4 functions for hyperparameter analysis of 2 models (Random Forest and KNN) and their error functions which are then plotted
 - main.py - Takes all the above together to provide a succinct overview of the project, runs all the models and displays their respective analysis graphs discussed in the Group Report. Ran upon a command line command stated below in this file
 
+Note there is a plots folder too, which contains all the plots created upon running the code (these plots mainly come from the plot.py and main.py files).
+
 ## Libraries we haved used
 In this project we have used the following Python libraries:
 - Numpy (For mathematical calculations for the data)
@@ -39,8 +41,8 @@ In this project we have used the following Python libraries:
 ## Interface instructions
 
 Main command for plots and results
-python main.py <DATA FILE> <COMMAND LINE OPTIONS/FLAGS>
-python main.py MobilePricingUpdated.csv
+'python main.py <DATA FILE> <COMMAND LINE OPTIONS/FLAGS>'
+'python main.py MobilePricingUpdated.csv'
 
 ## Reproducing the results 
 For the duration of the running of the code (the main file command), it takes roughly around 3 minutes and 30 seconds, depending on your machine.
