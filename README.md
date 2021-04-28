@@ -26,7 +26,8 @@ In this folder, we have 9 Python files, all handling different aspects of the en
 
 Note there is a plots folder too, which contains all the plots created upon running the code (these plots mainly come from the plot.py and main.py files).
 
-## Libraries we haved used
+## Libraries
+We have a separate dependency file listing all the libraries we have used...
 In this project we have used the following Python libraries:
 - Numpy (For mathematical calculations for the data)
 - Matplotlib (For visualisation of the dataset)
@@ -44,7 +45,7 @@ Main command for plots and results
 ```
 python main.py MobilePricingUpdated.csv
 ```
-'python main.py MobilePricingUpdated.csv'
+
 
 ## Reproducing the results 
 For the duration of the running of the code (the main file command), it takes roughly around 3 minutes and 30 seconds, depending on your machine.
