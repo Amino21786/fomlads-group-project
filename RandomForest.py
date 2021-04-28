@@ -15,7 +15,7 @@ np.random.seed(42) #seed for repeatable results
 def RandomForest(dataset, n, n_trees, ran_state):
     X_train, Y_train, X_test, Y_test = train_test_data(dataset, n) #runs train_test_split function
     start=time.process_time()
-    RFClassifier = RandomForestClassifier(n_estimators=n_trees, random_state=ran_state)
+    RFClassifier = RandomForestClassifier(n_estimators=n_trees, random_state=ran_state) #The 2 hyperparameters looked at, the max_features was also looked at but made no different so is left as default value of None
     RFClassifier.fit(X_train,Y_train)
     y_pred_RF = RFClassifier.predict(X_test)
     #5 metrics (Accuracy, confusion Matrix, precision, recall and f1 (both types))

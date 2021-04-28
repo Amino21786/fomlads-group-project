@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 import time
 import matplotlib.pyplot as plt
-np.random.seed(42) #seed for repeatable results
+
 plt.style.use('seaborn-whitegrid')
 
 
@@ -87,6 +87,8 @@ def ideal_k_unscaled(dataset):
     print('---------------------------------------------')
     print("For Knn for unscaled data: The maximum value of accuracy is ", max(listacc), "and the ideal k to achieve this value is ", 2*listacc.index(max_value)+1)  
     # The step is 2, and we start the counting of indices from 0. So, to find k, we multiply by 2 the index of maximum value of accuracy and then add 1.
+
+    
 def ideal_k_scaled(dataset):
 # Train test split can take different values. However, we will choose a=0.8 as in RandomForest.py, to make the test as fair as possible.
     x_train, Y_train, x_test, Y_test = train_test_data(dataset,0.8) #runs train_test_split function 

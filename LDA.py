@@ -9,7 +9,7 @@ from metrics import precision_and_recall
 from metrics import micro_average_f1_score
 from metrics import macro_average_f1_score
 
-np.random.seed(42) #seed for repeatable results
+
 def LDA(dataset, n):
     X_train, Y_train, X_test, Y_test = train_test_data('MobilePricingUpdated.csv', n) #runs train_test_split function
     start=time.process_time()

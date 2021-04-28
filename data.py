@@ -9,7 +9,7 @@ def preprocessing(dataset):
     df_updated.to_csv('MobilePricingUpdated.csv', index=False)
 
 
-def corrleation_heatmap(dataset):
+def correlation_heatmap(dataset):
     df=pd.read_csv(dataset)
     plt.subplots(figsize=(15,13))
     sns.heatmap(df.corr(), annot = True, fmt='.1g', linewidths=.5, vmin=-1, vmax=1, cmap='coolwarm',  cbar_kws= {'orientation': 'horizontal'} )

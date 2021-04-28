@@ -2,8 +2,19 @@ import pandas as pd
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
-
 import scipy.sparse
+from modelconstruct import train_test_data
+from modelconstruct import standardscaler
+from metrics import accuracy
+from metrics import confusion_matrix
+from metrics import precision_and_recall
+from metrics import micro_average_f1_score
+from metrics import macro_average_f1_score
+import time
+
+
+np.random.seed(42)
+
 def onehotvector(X):
     m=X.shape[0]
     onehot=scipy.sparse.csr_matrix((np.ones(m), (X, np.array(range(m)))))
@@ -64,17 +75,7 @@ def predictionfromprobability(x,w):
 
 
 
-from modelconstruct import train_test_data
-from modelconstruct import standardscaler
-from metrics import accuracy
-from metrics import confusion_matrix
-from metrics import precision_and_recall
-from metrics import micro_average_f1_score
-from metrics import macro_average_f1_score
-import time
 
-
-np.random.seed(42)
 def SoftmaxRegression(dataset, n, learning_rate, iterations, regularisation):
     
     x_train, Y_train, x_test, Y_test= train_test_data (dataset, n)
@@ -83,8 +84,6 @@ def SoftmaxRegression(dataset, n, learning_rate, iterations, regularisation):
     X_test = standardscaler(x_test)
     w=np.random.rand(X_train.shape[1]+1,len(np.unique(Y_train)))
     loss_vals, final_weight= gradient_descent(X_train,Y_train, w, learning_rate, iterations,regularisation)
-    #plt.figure()
-    #plt.plot(loss_vals)
     probabilities, prediction=predictionfromprobability(X_train, final_weight)
     acc_train= accuracy(prediction, Y_train)
     test_prob, test_predict=predictionfromprobability(X_test, final_weight)

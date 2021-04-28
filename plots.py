@@ -21,7 +21,7 @@ def rf_hyperparameters(dataset):
     acc_scores=[]
     mi_f1=[]
     ma_f1=[]
-    for i in n_range:
+    for i in n_range: #like RandomForest.py but for different n_estimators
         RFClassifier = RandomForestClassifier(n_estimators=i, random_state=4)
         RFClassifier.fit(X_train,Y_train)
         y_pred_RF = RFClassifier.predict(X_test)
@@ -58,7 +58,7 @@ def oob_error_rf(dataset):
     X_train, Y_train, X_test, Y_test = train_test_data(dataset, 0.8) #runs train_test_split function
     n_range=range(10,100)
     oob_errors=[]
-    for i in n_range:
+    for i in n_range: #like RandomForest.py but for different n_estimators
         RFClassifier = RandomForestClassifier(n_estimators=i, oob_score=True, random_state=4)
         RFClassifier.fit(X_train,Y_train)
         oob_errors.append(1-RFClassifier.oob_score_)
@@ -72,7 +72,7 @@ def oob_error_rf(dataset):
     plt.close()
     
  
-# not scaled, below:
+# KNN not scaled, below:
 
 # n is the test_train_split value below:
 def Knn_hyperparameters(dataset):
@@ -134,18 +134,3 @@ def error_function_Knn(dataset):
     plt.ylabel('Error Rate')
     plt.savefig('plots/Knn Error function for unscaled data')
     plt.close()
-
-
-
-''' These will be saved when running main.py, so there is no need to run them here.
-
-Knn_hyperparameters('MobilePricingUpdated.csv')
-error_function_Knn('MobilePricingUpdated.csv')
-rf_hyperparameters('MobilePricingUpdated.csv')
-oob_error_rf('MobilePricingUpdated.csv')
-
-'''
-
-
-
-
