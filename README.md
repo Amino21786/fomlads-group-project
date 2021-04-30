@@ -38,7 +38,7 @@ In this project we have used the following Python libraries:
 - warnings 
 
 ## Interface instructions
-Creating the conda environment and installing the relevant libraries from a file:
+To creatie the conda environment one can install via a dependencies file command:
 ```
 conda env create -f dependencies.yml
 ```
