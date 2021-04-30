@@ -59,12 +59,7 @@ For the duration of the running of the code (the main file command), it takes ro
 Randomness was used in this project, mainly for Random Forest, which used the parameter random_state, the random seed of 42 was used to ensure reproducible results.
 
 
-## Discussion references if needed
-Noteable case iPhoneX starting at $1000 
-https://pricespy.co.uk/search?search=iphone%2012%20pro
-Tim Cook on why the price - https://www.slashgear.com/iphone-x-pricing-release-schedule-strategy-details-tim-cook-earnings-apple-01529212/#:~:text=Cook%20responded%20to%20a%20question,starting%20price%20of%20%24999%20USD 
-Marquees Brownlee budget phone video:
-https://www.youtube.com/watch?v=u41Zt6z5s7A points budget system and spending it on features, some more high end, others less so and the trade offs with that
+
 
 
 
