@@ -27,7 +27,6 @@ In this folder, we have 9 Python files, all handling different aspects of the en
 Note there is a plots folder too, which contains all the plots created upon running the code (these plots mainly come from the plot.py and main.py files).
 
 ## Libraries
-We have a separate dependency file listing all the libraries we have used...
 In this project we have used the following Python libraries:
 - Numpy (For mathematical calculations for the data)
 - Matplotlib (For visualisation of the dataset)
@@ -40,8 +39,16 @@ In this project we have used the following Python libraries:
 - warnings 
 
 ## Interface instructions
+Creating the conda environment and installing the relevant libraries from a file:
+```
+conda env create -f dependencies.yml
+```
+This exports the relevant libraries (time, sys and warnings are already in the base Python) into an new environment called my_env_project, which can then be activated by:
+```
+conda activate my_env_project
+```
 
-Main command for plots and results
+Then, the code can be run through the main command for plots and results
 ```
 python main.py MobilePricingUpdated.csv
 ```

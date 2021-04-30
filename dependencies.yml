@@ -1,0 +1,9 @@
+name: my_env_project
+dependencies:
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - scipy
+  
