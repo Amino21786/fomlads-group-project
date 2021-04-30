@@ -21,7 +21,7 @@ In this folder, we have 9 Python files, all handling different aspects of the en
 - metrics.py - Has 5 functions setting out the 5 metrics that are explored in this project (Accuracy, confusion matrix, precision, recall and F1 Score), with some functions used again further down the line to calculate another metric (e.g precision and recall for F1 score)
 - SoftmaxRegression.py, LDA.py, Knn.py and RandomForest.py - These contain the construction of the models investigated in this project in their respective files, they ran with their optimal hyperparameters
 - plots.py - Holds 4 functions for hyperparameter analysis of 2 models (Random Forest and KNN) and their error functions which are then plotted
-- main.py - Takes all the above together to provide a succinct overview of the project, runs all the models and displays their respective analysis graphs discussed in the Group Report. Ran upon a command line command stated below in this file
+- main.py - Takes all the above together to provide a succinct overview of the project, runs all the models and displays their respective analysis graphs discussed in the Group Report. Ran upon a command line command stated below in this file.
 
 Note there is a plots folder too, which contains all the plots created upon running the code (these plots mainly come from the plot.py and main.py files).
 
