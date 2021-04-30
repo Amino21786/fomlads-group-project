@@ -1,6 +1,5 @@
 # fomlads-group-project 
 # Model Comparison on the Mobile Pricing Classification Dataset
-"Explain the code base and the functionality of the modules"
 In this repository we will investigate the patterns of this dataset. The 4 models we will use:
 
 - Fisher's Linear Discriminant Analysis
